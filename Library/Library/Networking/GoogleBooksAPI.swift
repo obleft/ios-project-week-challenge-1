@@ -13,7 +13,7 @@ class GoogleBooksAPI {
     // enter new endpoint here
     static let endpoint = "https://pokeapi.co/api/v2/pokemon/"
     // Add the completion last
-    static func searchForPokemon(with searchTerm: String, completion: @escaping ([Pokemon]?, Error?) -> Void) {
+    static func searchForBooks(with searchTerm: String, completion: @escaping ([Book]?, Error?) -> Void) {
         
         // Establish the base url for our search
         guard let baseURL = URL(string: "https://pokeapi.co/api/v2/pokemon/\(searchTerm.lowercased())/")
@@ -76,25 +76,18 @@ class GoogleBooksAPI {
                 // Perform decoding into [Pokemoon] stored in PersonSearchResults
                 let searchResults = try jsonDecoder.decode(BookSearchResults.self, from: data)
                 
-                
                 let name = searchResults.name
                 let id = searchResults.id
                 let types = searchResults.types
                 let abilities = searchResults.abilities
                 let sprites = searchResults.sprites
                 
-                //                let abilities = searchResults.abilities[0].keys
+                let book = Book(name: name, id: id, types: types, abilities: abilities, sprites: sprites)
                 
-                let pokemon = Book(name: name, id: id, types: types, abilities: abilities, sprites: sprites)
-                
-                //let types = searchResults.types
-                //let abilities = searchResults.abilities
-                //, types: types, abilities: abilities
-                
-                let pokemons = [pokemon]
+                let books = [book]
                 
                 // Send back the results to the completion handler
-                completion(pokemons, nil)
+                completion(books, nil)
                 
             } catch {
                 NSLog("Unable to decode data into pokemon: \(error)")

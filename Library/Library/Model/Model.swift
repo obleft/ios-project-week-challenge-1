@@ -16,51 +16,51 @@ class Model {
     typealias UpdateHandler = () -> Void
     var updateHandler: UpdateHandler? = nil
     
-    private var pokemons: [Pokemon] = []
+    private var books: [Book] = []
     
     func count() -> Int {
-        return pokemons.count
+        return books.count
     }
     
-    func pokemon(forIndex index: Int) -> Pokemon {
+    func book(forIndex index: Int) -> Book {
         print(index)
-        return pokemons[index]
+        return books[index]
     }
     
-    func movePokemon(from index: Int, to destinationIndex: Int) {
-        let pokemon = pokemons.remove(at: index)
-        pokemons.insert(pokemon, at: destinationIndex)
+    func moveBook(from index: Int, to destinationIndex: Int) {
+        let book = books.remove(at: index)
+        books.insert(book, at: destinationIndex)
     }
     
-    func setPokemon(pokemons: [Pokemon]) {
-        Model.shared.pokemons = pokemons
+    func setBook(books: [Book]) {
+        Model.shared.books = books
     }
     
     // MARK: Core Database Management Methods
     
     
-    func addNewPokemon(pokemon: Pokemon, completion: @escaping () -> Void) {
+    func addNewBook(book: Book, completion: @escaping () -> Void) {
         
         // append it to our devices array, updating our local model <-- local
-        pokemons.append(pokemon)
+        books.append(book)
         
         // save it by pushing it to the firebase thing <-- remote
-        Firebase<Pokemon>.save(item: pokemon){ success in
+        Firebase<Book>.save(item: book){ success in
             guard success else {return}
             DispatchQueue.main.async { completion()}
         }
         delegate?.modelDidUpdate()
     }
     
-    func deletePokemon(at indexPath: IndexPath, completion: @escaping () -> Void) {
+    func deleteBook(at indexPath: IndexPath, completion: @escaping () -> Void) {
         //
-        let pokemon = pokemons[indexPath.row]
+        let book = books[indexPath.row]
         
         //
-        pokemons.remove(at: indexPath.row)
+        books.remove(at: indexPath.row)
         
         // remote
-        Firebase<Pokemon>.delete(item: pokemon){ success in
+        Firebase<Book>.delete(item: book){ success in
             guard success else {return}
             DispatchQueue.main.async { completion()}
         }
@@ -68,14 +68,14 @@ class Model {
     }
     
     
-    func updatePokemon(for pokemon: Pokemon, completion: @escaping () -> Void) {
+    func updateBook(for book: Book, completion: @escaping () -> Void) {
         //
         
         // TODO: do we need this?
         //device.uuid = UUID().uuidString
         
         // remote
-        Firebase<Pokemon>.save(item: pokemon){ success in
+        Firebase<Book>.save(item: book){ success in
             guard success else {return}
             DispatchQueue.main.async { completion()}
         }
@@ -85,7 +85,7 @@ class Model {
     // MARK: Core Search Functionality
     
     func search(for string: String, completion: @escaping () -> Void) {
-        Pokeapi.searchForPokemon(with: string) { results, error in
+        GoogleBooksAPI.searchForBooks(with: string) { results, error in
             if let error = error {
                 NSLog("Error fetching Pokemon: \(error)")
                 return
@@ -99,7 +99,7 @@ class Model {
         }
     }
     
-    var results: [Pokemon] = [] {
+    var results: [Book] = [] {
         didSet {
             DispatchQueue.main.async {
                 self.updateHandler?()
@@ -111,7 +111,7 @@ class Model {
         return results.count
     }
     
-    func result(at index: Int) -> Pokemon {
+    func result(at index: Int) -> Book {
         return results[index]
     }
     

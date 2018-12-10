@@ -8,7 +8,7 @@
 
 import Foundation
 
-class Bok: Codable & FirebaseItem {
+class Book: Codable & FirebaseItem {
     let abilities: [AbilityElement]
     let id: Int
     let name: String

@@ -10,6 +10,15 @@ import UIKit
 
 class BookDetailViewController: UIViewController {
 
+    var pokemon: Book?
+    
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        
+    }
+
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 

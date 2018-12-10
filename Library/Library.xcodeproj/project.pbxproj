@@ -25,6 +25,8 @@
 		D13C939A21BF09BB00E53C2B /* BookshelvesTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D13C939921BF09BB00E53C2B /* BookshelvesTableViewController.swift */; };
 		D13C939C21BF09CE00E53C2B /* BookshelvesTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D13C939B21BF09CE00E53C2B /* BookshelvesTableViewCell.swift */; };
 		D13C939E21BF0A5B00E53C2B /* BookDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D13C939D21BF0A5B00E53C2B /* BookDetailViewController.swift */; };
+		D13C95FC21BF14D400E53C2B /* BookshelvesDetailTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D13C95FB21BF14D400E53C2B /* BookshelvesDetailTableViewController.swift */; };
+		D13C95FE21BF14E900E53C2B /* BookshelvesDetailTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D13C95FD21BF14E900E53C2B /* BookshelvesDetailTableViewCell.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -49,6 +51,8 @@
 		D13C939B21BF09CE00E53C2B /* BookshelvesTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookshelvesTableViewCell.swift; sourceTree = "<group>"; };
 		D13C939D21BF0A5B00E53C2B /* BookDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookDetailViewController.swift; sourceTree = "<group>"; };
 		D13C95FA21BF0BC100E53C2B /* Good Boy License.pdf */ = {isa = PBXFileReference; lastKnownFileType = image.pdf; path = "Good Boy License.pdf"; sourceTree = "<group>"; };
+		D13C95FB21BF14D400E53C2B /* BookshelvesDetailTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookshelvesDetailTableViewController.swift; sourceTree = "<group>"; };
+		D13C95FD21BF14E900E53C2B /* BookshelvesDetailTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookshelvesDetailTableViewCell.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -112,6 +116,8 @@
 				D13C939921BF09BB00E53C2B /* BookshelvesTableViewController.swift */,
 				D13C939B21BF09CE00E53C2B /* BookshelvesTableViewCell.swift */,
 				D13C939D21BF0A5B00E53C2B /* BookDetailViewController.swift */,
+				D13C95FB21BF14D400E53C2B /* BookshelvesDetailTableViewController.swift */,
+				D13C95FD21BF14E900E53C2B /* BookshelvesDetailTableViewCell.swift */,
 			);
 			path = "View Controllers";
 			sourceTree = "<group>";
@@ -212,6 +218,7 @@
 				D13C939221BF08FD00E53C2B /* AllBooksTableViewController.swift in Sources */,
 				D13C938E21BF083A00E53C2B /* Firebase.swift in Sources */,
 				D13C938A21BF081D00E53C2B /* BookSearchResults.swift in Sources */,
+				D13C95FC21BF14D400E53C2B /* BookshelvesDetailTableViewController.swift in Sources */,
 				D13C939A21BF09BB00E53C2B /* BookshelvesTableViewController.swift in Sources */,
 				D13C939621BF095E00E53C2B /* SearchTableViewCell.swift in Sources */,
 				D13C938821BF080D00E53C2B /* Book.swift in Sources */,
@@ -219,6 +226,7 @@
 				D13C936A21BEDDAB00E53C2B /* AppDelegate.swift in Sources */,
 				D13C939821BF096900E53C2B /* SearchTableViewController.swift in Sources */,
 				D13C939021BF08AB00E53C2B /* GoogleBooksAPI.swift in Sources */,
+				D13C95FE21BF14E900E53C2B /* BookshelvesDetailTableViewCell.swift in Sources */,
 				D13C938C21BF083000E53C2B /* FirebaseItem.swift in Sources */,
 				D13C938621BF07EE00E53C2B /* ModelUpdateClient.swift in Sources */,
 				D13C938421BF07DD00E53C2B /* Model.swift in Sources */,
