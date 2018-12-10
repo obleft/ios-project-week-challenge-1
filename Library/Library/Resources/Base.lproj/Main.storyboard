@@ -13,13 +13,13 @@
         <!--All Books-->
         <scene sceneID="Y6B-GR-fLh">
             <objects>
-                <tableViewController id="BUS-6C-mvC" sceneMemberID="viewController">
+                <tableViewController id="BUS-6C-mvC" customClass="AllBooksTableViewController" customModule="Library" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" id="59O-jq-BoU">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <prototypes>
-                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="allBooksCell" id="hao-OR-DOw">
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="allBooksCell" id="hao-OR-DOw" customClass="AllBooksTableViewCell" customModule="Library" customModuleProvider="target">
                                 <rect key="frame" x="0.0" y="28" width="375" height="44"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="hao-OR-DOw" id="hq4-Xf-CQD">
@@ -51,7 +51,7 @@
         <!--Search-->
         <scene sceneID="fl0-bN-Cn8">
             <objects>
-                <tableViewController id="xOU-R3-0Fa" sceneMemberID="viewController">
+                <tableViewController id="xOU-R3-0Fa" customClass="SearchTableViewController" customModule="Library" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" id="kE4-Go-3nv">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -62,7 +62,7 @@
                             <textInputTraits key="textInputTraits"/>
                         </searchBar>
                         <prototypes>
-                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="searchResultCell" id="DQK-fJ-yB2">
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="searchResultCell" id="DQK-fJ-yB2" customClass="SearchTableViewCell" customModule="Library" customModuleProvider="target">
                                 <rect key="frame" x="0.0" y="72" width="375" height="44"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="DQK-fJ-yB2" id="1ul-wG-yVo">
@@ -86,13 +86,13 @@
         <scene sceneID="sbK-Op-BZM">
             <objects>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="ogR-0e-hjh" userLabel="First Responder" sceneMemberID="firstResponder"/>
-                <tableViewController id="sVI-tK-9oI" sceneMemberID="viewController">
+                <tableViewController id="sVI-tK-9oI" customClass="BookshelvesTableViewController" customModule="Library" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" id="FR7-BV-C2L">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <prototypes>
-                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="bookshelvesCell" id="biT-2u-i2m">
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="bookshelvesCell" id="biT-2u-i2m" customClass="BookshelvesTableViewCell" customModule="Library" customModuleProvider="target">
                                 <rect key="frame" x="0.0" y="28" width="375" height="44"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="biT-2u-i2m" id="bhp-wP-0GG">
@@ -120,10 +120,10 @@
             </objects>
             <point key="canvasLocation" x="297" y="842"/>
         </scene>
-        <!--View Controller-->
+        <!--Book Detail View Controller-->
         <scene sceneID="Sbd-mC-14Q">
             <objects>
-                <viewController id="4Ve-VR-NqN" sceneMemberID="viewController">
+                <viewController id="4Ve-VR-NqN" customClass="BookDetailViewController" customModule="Library" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="0lv-nc-nil">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -238,16 +238,16 @@
             </objects>
             <point key="canvasLocation" x="177" y="2482"/>
         </scene>
-        <!--Table View Controller-->
+        <!--Bookshelves Detail Table View Controller-->
         <scene sceneID="Hf5-rf-Uwj">
             <objects>
-                <tableViewController id="3Iu-hF-ch0" sceneMemberID="viewController">
+                <tableViewController id="3Iu-hF-ch0" customClass="BookshelvesDetailTableViewController" customModule="Library" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" id="uFK-BV-dNb">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <prototypes>
-                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="searchViaBookshelvesSegue" id="8oc-8i-fpj">
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="searchViaBookshelvesSegue" id="8oc-8i-fpj" customClass="BookshelvesDetailTableViewCell" customModule="Library" customModuleProvider="target">
                                 <rect key="frame" x="0.0" y="28" width="375" height="44"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="8oc-8i-fpj" id="TmM-t3-zzc">
@@ -294,7 +294,7 @@
         <image name="book" width="30" height="30"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="JzR-bn-w6N"/>
+        <segue reference="M3v-qC-Xfm"/>
         <segue reference="Nlg-Sn-2px"/>
     </inferredMetricsTieBreakers>
 </document>
