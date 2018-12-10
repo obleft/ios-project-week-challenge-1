@@ -11,6 +11,20 @@
 		D13C936F21BEDDAB00E53C2B /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D13C936D21BEDDAB00E53C2B /* Main.storyboard */; };
 		D13C937121BEDDAF00E53C2B /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D13C937021BEDDAF00E53C2B /* Assets.xcassets */; };
 		D13C937421BEDDAF00E53C2B /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D13C937221BEDDAF00E53C2B /* LaunchScreen.storyboard */; };
+		D13C938421BF07DD00E53C2B /* Model.swift in Sources */ = {isa = PBXBuildFile; fileRef = D13C938321BF07DD00E53C2B /* Model.swift */; };
+		D13C938621BF07EE00E53C2B /* ModelUpdateClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = D13C938521BF07EE00E53C2B /* ModelUpdateClient.swift */; };
+		D13C938821BF080D00E53C2B /* Book.swift in Sources */ = {isa = PBXBuildFile; fileRef = D13C938721BF080D00E53C2B /* Book.swift */; };
+		D13C938A21BF081D00E53C2B /* BookSearchResults.swift in Sources */ = {isa = PBXBuildFile; fileRef = D13C938921BF081D00E53C2B /* BookSearchResults.swift */; };
+		D13C938C21BF083000E53C2B /* FirebaseItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = D13C938B21BF083000E53C2B /* FirebaseItem.swift */; };
+		D13C938E21BF083A00E53C2B /* Firebase.swift in Sources */ = {isa = PBXBuildFile; fileRef = D13C938D21BF083A00E53C2B /* Firebase.swift */; };
+		D13C939021BF08AB00E53C2B /* GoogleBooksAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = D13C938F21BF08AB00E53C2B /* GoogleBooksAPI.swift */; };
+		D13C939221BF08FD00E53C2B /* AllBooksTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D13C939121BF08FD00E53C2B /* AllBooksTableViewController.swift */; };
+		D13C939421BF091600E53C2B /* AllBooksTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D13C939321BF091600E53C2B /* AllBooksTableViewCell.swift */; };
+		D13C939621BF095E00E53C2B /* SearchTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D13C939521BF095E00E53C2B /* SearchTableViewCell.swift */; };
+		D13C939821BF096900E53C2B /* SearchTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D13C939721BF096900E53C2B /* SearchTableViewController.swift */; };
+		D13C939A21BF09BB00E53C2B /* BookshelvesTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D13C939921BF09BB00E53C2B /* BookshelvesTableViewController.swift */; };
+		D13C939C21BF09CE00E53C2B /* BookshelvesTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D13C939B21BF09CE00E53C2B /* BookshelvesTableViewCell.swift */; };
+		D13C939E21BF0A5B00E53C2B /* BookDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D13C939D21BF0A5B00E53C2B /* BookDetailViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -20,6 +34,21 @@
 		D13C937021BEDDAF00E53C2B /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		D13C937321BEDDAF00E53C2B /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		D13C937521BEDDAF00E53C2B /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		D13C938321BF07DD00E53C2B /* Model.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Model.swift; sourceTree = "<group>"; };
+		D13C938521BF07EE00E53C2B /* ModelUpdateClient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ModelUpdateClient.swift; sourceTree = "<group>"; };
+		D13C938721BF080D00E53C2B /* Book.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Book.swift; sourceTree = "<group>"; };
+		D13C938921BF081D00E53C2B /* BookSearchResults.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookSearchResults.swift; sourceTree = "<group>"; };
+		D13C938B21BF083000E53C2B /* FirebaseItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirebaseItem.swift; sourceTree = "<group>"; };
+		D13C938D21BF083A00E53C2B /* Firebase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Firebase.swift; sourceTree = "<group>"; };
+		D13C938F21BF08AB00E53C2B /* GoogleBooksAPI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GoogleBooksAPI.swift; sourceTree = "<group>"; };
+		D13C939121BF08FD00E53C2B /* AllBooksTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AllBooksTableViewController.swift; sourceTree = "<group>"; };
+		D13C939321BF091600E53C2B /* AllBooksTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AllBooksTableViewCell.swift; sourceTree = "<group>"; };
+		D13C939521BF095E00E53C2B /* SearchTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchTableViewCell.swift; sourceTree = "<group>"; };
+		D13C939721BF096900E53C2B /* SearchTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchTableViewController.swift; sourceTree = "<group>"; };
+		D13C939921BF09BB00E53C2B /* BookshelvesTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookshelvesTableViewController.swift; sourceTree = "<group>"; };
+		D13C939B21BF09CE00E53C2B /* BookshelvesTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookshelvesTableViewCell.swift; sourceTree = "<group>"; };
+		D13C939D21BF0A5B00E53C2B /* BookDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookDetailViewController.swift; sourceTree = "<group>"; };
+		D13C95FA21BF0BC100E53C2B /* Good Boy License.pdf */ = {isa = PBXFileReference; lastKnownFileType = image.pdf; path = "Good Boy License.pdf"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -58,6 +87,7 @@
 				D13C937C21BEE7E800E53C2B /* View Controllers */,
 				D13C937B21BEE7E300E53C2B /* Resources */,
 				D13C937021BEDDAF00E53C2B /* Assets.xcassets */,
+				D13C95FA21BF0BC100E53C2B /* Good Boy License.pdf */,
 				D13C937521BEDDAF00E53C2B /* Info.plist */,
 			);
 			path = Library;
@@ -75,6 +105,13 @@
 		D13C937C21BEE7E800E53C2B /* View Controllers */ = {
 			isa = PBXGroup;
 			children = (
+				D13C939121BF08FD00E53C2B /* AllBooksTableViewController.swift */,
+				D13C939321BF091600E53C2B /* AllBooksTableViewCell.swift */,
+				D13C939521BF095E00E53C2B /* SearchTableViewCell.swift */,
+				D13C939721BF096900E53C2B /* SearchTableViewController.swift */,
+				D13C939921BF09BB00E53C2B /* BookshelvesTableViewController.swift */,
+				D13C939B21BF09CE00E53C2B /* BookshelvesTableViewCell.swift */,
+				D13C939D21BF0A5B00E53C2B /* BookDetailViewController.swift */,
 			);
 			path = "View Controllers";
 			sourceTree = "<group>";
@@ -82,6 +119,10 @@
 		D13C937D21BEE7EB00E53C2B /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				D13C938321BF07DD00E53C2B /* Model.swift */,
+				D13C938521BF07EE00E53C2B /* ModelUpdateClient.swift */,
+				D13C938721BF080D00E53C2B /* Book.swift */,
+				D13C938921BF081D00E53C2B /* BookSearchResults.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -89,6 +130,9 @@
 		D13C937E21BEE7ED00E53C2B /* Networking */ = {
 			isa = PBXGroup;
 			children = (
+				D13C938B21BF083000E53C2B /* FirebaseItem.swift */,
+				D13C938D21BF083A00E53C2B /* Firebase.swift */,
+				D13C938F21BF08AB00E53C2B /* GoogleBooksAPI.swift */,
 			);
 			path = Networking;
 			sourceTree = "<group>";
@@ -164,7 +208,21 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				D13C939421BF091600E53C2B /* AllBooksTableViewCell.swift in Sources */,
+				D13C939221BF08FD00E53C2B /* AllBooksTableViewController.swift in Sources */,
+				D13C938E21BF083A00E53C2B /* Firebase.swift in Sources */,
+				D13C938A21BF081D00E53C2B /* BookSearchResults.swift in Sources */,
+				D13C939A21BF09BB00E53C2B /* BookshelvesTableViewController.swift in Sources */,
+				D13C939621BF095E00E53C2B /* SearchTableViewCell.swift in Sources */,
+				D13C938821BF080D00E53C2B /* Book.swift in Sources */,
+				D13C939C21BF09CE00E53C2B /* BookshelvesTableViewCell.swift in Sources */,
 				D13C936A21BEDDAB00E53C2B /* AppDelegate.swift in Sources */,
+				D13C939821BF096900E53C2B /* SearchTableViewController.swift in Sources */,
+				D13C939021BF08AB00E53C2B /* GoogleBooksAPI.swift in Sources */,
+				D13C938C21BF083000E53C2B /* FirebaseItem.swift in Sources */,
+				D13C938621BF07EE00E53C2B /* ModelUpdateClient.swift in Sources */,
+				D13C938421BF07DD00E53C2B /* Model.swift in Sources */,
+				D13C939E21BF0A5B00E53C2B /* BookDetailViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

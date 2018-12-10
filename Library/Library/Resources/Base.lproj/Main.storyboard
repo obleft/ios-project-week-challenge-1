@@ -39,7 +39,7 @@
                     <navigationItem key="navigationItem" title="All Books" id="1tj-60-74O">
                         <barButtonItem key="rightBarButtonItem" systemItem="search" id="n61-da-0a5">
                             <connections>
-                                <segue destination="xOU-R3-0Fa" kind="show" id="Nlg-Sn-2px"/>
+                                <segue destination="xOU-R3-0Fa" kind="show" identifier="searchViaAllBooksSegue" id="Nlg-Sn-2px"/>
                             </connections>
                         </barButtonItem>
                     </navigationItem>
@@ -80,7 +80,7 @@
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="1RA-oN-fvz" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2537" y="824"/>
+            <point key="canvasLocation" x="2356" y="882"/>
         </scene>
         <!--Bookshelves-->
         <scene sceneID="sbK-Op-BZM">
@@ -100,7 +100,7 @@
                                     <autoresizingMask key="autoresizingMask"/>
                                 </tableViewCellContentView>
                                 <connections>
-                                    <segue destination="sL6-Io-083" kind="show" id="CJE-9g-T0f"/>
+                                    <segue destination="sL6-Io-083" kind="show" identifier="detailViaBookshelvesSegue" id="CJE-9g-T0f"/>
                                 </connections>
                             </tableViewCell>
                         </prototypes>
@@ -112,7 +112,7 @@
                     <navigationItem key="navigationItem" title="Bookshelves" id="mor-2m-tOF">
                         <barButtonItem key="rightBarButtonItem" systemItem="search" id="jsU-ud-Jhv">
                             <connections>
-                                <segue destination="xOU-R3-0Fa" kind="show" id="c2D-eK-gqF"/>
+                                <segue destination="xOU-R3-0Fa" kind="show" identifier="searchViaBookshelvesSegue" id="c2D-eK-gqF"/>
                             </connections>
                         </barButtonItem>
                     </navigationItem>
@@ -186,7 +186,7 @@
         <scene sceneID="09w-SB-c7B">
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="6hv-T6-rnS" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="Bookshelves" id="mtP-Py-6xG"/>
+                    <tabBarItem key="tabBarItem" title="Bookshelves" selectedImage="albums" id="mtP-Py-6xG"/>
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="VwY-ED-ctL">
                         <rect key="frame" x="0.0" y="20" width="375" height="44"/>
@@ -205,7 +205,7 @@
         <scene sceneID="Rdm-5z-Nv4">
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="rgO-pV-hXH" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="All Books" id="wra-8k-H5n"/>
+                    <tabBarItem key="tabBarItem" title="All Books" selectedImage="book" id="wra-8k-H5n"/>
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="2f6-kg-o4k">
                         <rect key="frame" x="0.0" y="20" width="375" height="44"/>
@@ -239,8 +239,12 @@
             <point key="canvasLocation" x="2216.8000000000002" y="-24.7376311844078"/>
         </scene>
     </scenes>
+    <resources>
+        <image name="albums" width="30" height="30"/>
+        <image name="book" width="30" height="30"/>
+    </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="JzR-bn-w6N"/>
-        <segue reference="Nlg-Sn-2px"/>
+        <segue reference="CJE-9g-T0f"/>
+        <segue reference="c2D-eK-gqF"/>
     </inferredMetricsTieBreakers>
 </document>
