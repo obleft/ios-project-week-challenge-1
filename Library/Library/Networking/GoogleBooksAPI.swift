@@ -11,26 +11,26 @@ import Foundation
 class GoogleBooksAPI {
     
     // enter new endpoint here
-    static let endpoint = "https://pokeapi.co/api/v2/pokemon/"
+    static let endpoint = "https://www.googleapis.com/books/v1/volumes"
     // Add the completion last
     static func searchForBooks(with searchTerm: String, completion: @escaping ([Book]?, Error?) -> Void) {
         
         // Establish the base url for our search
-        guard let baseURL = URL(string: "https://pokeapi.co/api/v2/pokemon/\(searchTerm.lowercased())/")
+        guard let baseURL = URL(string: "https://www.googleapis.com/books/v1/volumes")
             else {
                 fatalError("Unable to construct baseURL")
         }
         
         // Decompose it into its components
-        guard let urlComponents = URLComponents(url: baseURL, resolvingAgainstBaseURL: true) else {
+        guard var urlComponents = URLComponents(url: baseURL, resolvingAgainstBaseURL: true) else {
             fatalError("Unable to resolve baseURL to components")
         }
         
         // Create the query item using `search` and the search term
-        // let searchQueryItem = URLQueryItem(name: "search", value: searchTerm)
+        let searchQueryItem = URLQueryItem(name: "q", value: searchTerm)
         
         // Add in the search term
-        // urlComponents.queryItems = [searchQueryItem]
+        urlComponents.queryItems = [searchQueryItem]
         
         // Recompose all those individual components back into a fully
         // realized search URL
@@ -40,6 +40,7 @@ class GoogleBooksAPI {
             return
         }
         
+        print(searchURL)
         // Create a GET request
         var request = URLRequest(url: searchURL)
         request.httpMethod = "GET" // basically "READ"
@@ -76,16 +77,43 @@ class GoogleBooksAPI {
                 // Perform decoding into [Pokemoon] stored in PersonSearchResults
                 let searchResults = try jsonDecoder.decode(BookSearchResults.self, from: data)
                 
-                let name = searchResults.name
-                let id = searchResults.id
-                let types = searchResults.types
-                let abilities = searchResults.abilities
-                let sprites = searchResults.sprites
+                var books: [Book] = []
                 
-                let book = Book(name: name, id: id, types: types, abilities: abilities, sprites: sprites)
+                for item in searchResults.items{
+                    //guard let volumeInfo = item.volumeInfo else {continue}
                 
-                let books = [book]
+                    let title: String = item.volumeInfo.title
+                    let subtitle: String = item.volumeInfo.subtitle ?? ""
+                    let etag: String = item.etag
+                    let id: String = item.id
+                    //let authors: [String]
+//                    let publisher: String? = item.volumeInfo.publisher
+//                    let publishedDate: String? = item.volumeInfo.publishedDate
+//                    let description: String? = item.volumeInfo.description
+//                    //let industryIdentifiers: [IndustryIdentifier]
+//                    //let readingModes: ReadingModes
+//                    let pageCount: Int?  = item.volumeInfo.pageCount
+//                    //let printType: PrintType
+//                    //let categories: [Category]
+//                    //let maturityRating: MaturityRating
+//                    let allowAnonLogging: Bool = item.volumeInfo.allowAnonLogging
+//                    let contentVersion: String = item.volumeInfo.contentVersion
+//                    //let imageLinks: ImageLinks
+//                    //let language: Language
+//                    let previewLink : String = item.volumeInfo.previewLink
+//                    let infoLink: String = item.volumeInfo.infoLink
+//                    let canonicalVolumeLink: String = item.volumeInfo.canonicalVolumeLink
+//                    //let averageRating: Double? = item.volumeInfo.averageRating?
+                    //let ratingsCount: Int? = item.volumeInfo.ratingsCount?
+                    //let panelizationSummary: PanelizationSummary?
                 
+                    let book = Book(id: id, etag: etag, title: title, subtitle: subtitle)
+                    
+                    print(book.title)
+                    books.append(book)
+                }
+                
+        
                 // Send back the results to the completion handler
                 completion(books, nil)
                 

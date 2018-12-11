@@ -10,6 +10,7 @@ import UIKit
 
 class BookDetailViewController: UIViewController {
 
+    typealias Book = VolumeInfo
     var pokemon: Book?
     
     

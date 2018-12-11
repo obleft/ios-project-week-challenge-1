@@ -39,7 +39,7 @@ class Firebase<Item: Codable & FirebaseItem> {
         ) {
         
         // Fetch appropriate request URL customized to method
-        var request = URLRequest(url: requestURL(method, for: item.recordIdentifier))
+        var request = URLRequest(url: requestURL(method, for: item.id))
         request.httpMethod = method
         
         // Encode this record
@@ -88,7 +88,7 @@ class Firebase<Item: Codable & FirebaseItem> {
                 
                 // Update record and store that name. POST is now successful
                 // and includes the recordIdentifier as part of the item record.
-                item.recordIdentifier = name
+                item.id = name
                 processRequest(method: "PUT", for: item)
                 completion(true)
                 
@@ -108,7 +108,7 @@ class Firebase<Item: Codable & FirebaseItem> {
     }
     
     static func save(item: Item, completion: @escaping (_ success: Bool) -> Void = { _ in }) {
-        switch item.recordIdentifier.isEmpty {
+        switch item.id.isEmpty {
         case true: // POST, new record
             processRequest(method: "POST", for: item, with: completion)
         case false: // PUT, existing record
@@ -132,7 +132,7 @@ class Firebase<Item: Codable & FirebaseItem> {
             
             do {
                 let recordDict = try JSONDecoder().decode([String: Item].self, from:data)
-                for (key, value) in recordDict { value.recordIdentifier = key } // pure paranoia
+                for (key, value) in recordDict { value.id = key } // pure paranoia
                 let records = recordDict.map({ $0.value }) // This converts the [[id: item]] array of dictionary entries into an array of items
                 print(records)
                 completion(records)

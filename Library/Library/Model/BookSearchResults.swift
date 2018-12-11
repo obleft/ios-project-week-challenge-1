@@ -3,11 +3,9 @@
 import Foundation
 
 // individual entry
-struct BookSearchResults: Codable{
-    let id: Int
-    let name: String
-    let types: [Book.TypeElement]
-    let abilities: [Book.AbilityElement]
-    let sprites: Book.Sprites
+struct BookSearchResults: Codable {
+    let kind: String
+    let totalItems: Int
+    let items: [Item]
     
 }

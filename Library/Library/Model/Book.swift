@@ -9,58 +9,32 @@
 import Foundation
 
 class Book: Codable & FirebaseItem {
-    let abilities: [AbilityElement]
-    let id: Int
-    let name: String
-    let sprites: Sprites
-    let types: [TypeElement]
-    var recordIdentifier: String = ""
+
     
-    init(name: String, id: Int, types: [TypeElement], abilities: [AbilityElement], sprites: Sprites) {
+    
+    var id: String
+    let etag: String
+    let title, subtitle: String
+//    let authors: [String]
+//    let publisher, publishedDate, description: String?
+//    let industryIdentifiers: [IndustryIdentifier]
+//    let readingModes: ReadingModes
+//    let pageCount: Int?
+//    let printType: PrintType
+//    let categories: [String]?
+//    let maturityRating: MaturityRating
+//    let allowAnonLogging: Bool
+//    let contentVersion: String
+//    let panelizationSummary: PanelizationSummary
+//    let imageLinks: ImageLinks?
+//    let language: Language
+//    let previewLink: String
+//    let infoLink: String
+//    let canonicalVolumeLink: String
+    
+    init(id: String, etag: String, title: String, subtitle: String) {
         // let types = types[0] ?? ""
         // let abilities = abilities[0] ?? ""
-        (self.name, self.id, self.types, self.abilities, self.sprites) = (name, id, types, abilities, sprites)
+        (self.id, self.etag, self.title, self.subtitle) = (id, etag, title, subtitle)
     }
-    
-    
-    struct AbilityElement: Codable {
-        let ability: TypeClass
-        let isHidden: Bool
-        let slot: Int
-        
-        enum CodingKeys: String, CodingKey {
-            case ability
-            case isHidden = "is_hidden"
-            case slot
-        }
-    }
-    
-    struct TypeClass: Codable {
-        let name: String
-        let url: String
-    }
-    
-    struct Sprites: Codable {
-        let backDefault, /*backFemale,*/ backShiny/*, backShinyFemale*/: String
-        let frontDefault, /*frontFemale,*/ frontShiny/*, frontShinyFemale*/: String
-        
-        enum CodingKeys: String, CodingKey {
-            case backDefault = "back_default"
-            //            case backFemale = "back_female"
-            case backShiny = "back_shiny"
-            //            case backShinyFemale = "back_shiny_female"
-            case frontDefault = "front_default"
-            //            case frontFemale = "front_female"
-            case frontShiny = "front_shiny"
-            //            case frontShinyFemale = "front_shiny_female"
-        }
-    }
-    
-    struct TypeElement: Codable {
-        let slot: Int
-        let type: TypeClass
-    }
-    
 }
-
-

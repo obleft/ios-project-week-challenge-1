@@ -9,9 +9,11 @@
 import Foundation
 
 class Model {
+    
     static let shared = Model()
     private init() {}
     var delegate: ModelUpdateClient?
+    
     
     typealias UpdateHandler = () -> Void
     var updateHandler: UpdateHandler? = nil
