@@ -32,8 +32,12 @@ class GoogleBooksAPI {
         // Create a query item #2 to get max results (40)
         let searchQueryItem2 = URLQueryItem(name: "maxResults", value: "40")
         
+        
+        // Create a query item #3 to restrict languages
+        let searchQueryItem3 = URLQueryItem(name: "langRestrict", value: "en")
+        
         // Add in the search terms
-        urlComponents.queryItems = [searchQueryItem,searchQueryItem2]
+        urlComponents.queryItems = [searchQueryItem, searchQueryItem2, searchQueryItem3]
         
         // Recompose all those individual components back into a fully
         // realized search URL
@@ -110,8 +114,9 @@ class GoogleBooksAPI {
 //                    //let averageRating: Double? = item.volumeInfo.averageRating?
                     //let ratingsCount: Int? = item.volumeInfo.ratingsCount?
                     //let panelizationSummary: PanelizationSummary?
+                    let userReview = ""
                 
-                    let book = Book(id: id, etag: etag, title: title, subtitle: subtitle, imageLinks: imageLinks)
+                    let book = Book(id: id, etag: etag, title: title, subtitle: subtitle, imageLinks: imageLinks, userReview: userReview)
                     
                     books.append(book)
                 }

@@ -10,7 +10,34 @@ import UIKit
 
 class BookshelvesTableViewController: UITableViewController {
 
-
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        navigationItem.rightBarButtonItem?.isEnabled = false
+        let activity = UIActivityIndicatorView()
+        activity.style = .gray
+        activity.startAnimating()
+        navigationItem.titleView = activity
+        
+        // Fetch records from Firebase and then reload the table view
+        // Note: this may be significantly delayed.
+        var index = 0
+        FirebaseCategories<Category>.fetchRecords { categories in
+            if let categories = categories {
+                Model.shared.setCategory(categories: categories)
+                
+                // Comment this out to show what it looks like while waiting
+                DispatchQueue.main.async {
+                    self.tableView.reloadData()
+                    self.navigationItem.rightBarButtonItem?.isEnabled = true
+                    self.navigationItem.titleView = nil
+                    self.title = "Bookshelves"
+                }
+            }
+            index += 1
+        }
+    }
+    
+    
     @IBAction func addCategory(_ sender: Any) {
         showInputDialog()
     }
@@ -37,9 +64,14 @@ class BookshelvesTableViewController: UITableViewController {
 
         let category = Model.shared.category(forIndex: indexPath.row)
         
-        cell.textLabel?.text = category
+        cell.textLabel?.text = category.name
+        
+        guard let count = category.books?.count else {
+            cell.detailTextLabel?.text = "0"
+            return cell}
+        
+        cell.detailTextLabel?.text = String(count)
         // Configure the cell...
-
         return cell
     }
 
@@ -105,13 +137,20 @@ class BookshelvesTableViewController: UITableViewController {
                 print("Issue with Alert TextFields")
                 return
             }
-            guard let newCategory = userField.text else {
+            guard let newCategoryName = userField.text else {
                 print("Issue with TextFields Text")
                 return
             }
             
-            Model.shared.addCategory(category: newCategory)
-            self.tableView.reloadData()
+            let newCategory = Category(id: "", name: newCategoryName, books: nil)
+            
+            Model.shared.addNewCategory(category: newCategory){
+                DispatchQueue.main.async {
+                    self.tableView.reloadData()
+                }
+            }
+            
+            
             
             // Condition Logic
         })

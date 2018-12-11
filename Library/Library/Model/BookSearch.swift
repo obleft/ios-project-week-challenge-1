@@ -41,6 +41,7 @@ enum Country: String, Codable {
     case gb = "GB"
     case us = "US"
     case nl = "NL"
+    case de = "DE"
 }
 
 struct Epub: Codable {
@@ -150,6 +151,7 @@ enum TypeEnum: String, Codable {
 enum Language: String, Codable {
     case en = "en"
     case nl = "nl"
+    case de = "de"
 }
 
 enum MaturityRating: String, Codable {

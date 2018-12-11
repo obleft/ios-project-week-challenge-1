@@ -31,10 +31,11 @@ class Book: Codable & FirebaseItem {
 //    let previewLink: String
 //    let infoLink: String
 //    let canonicalVolumeLink: String
+    let userReview: String?
     
-    init(id: String, etag: String, title: String, subtitle: String, imageLinks: String) {
+    init(id: String, etag: String, title: String, subtitle: String, imageLinks: String, userReview: String?) {
         // let types = types[0] ?? ""
         // let abilities = abilities[0] ?? ""
-        (self.id, self.etag, self.title, self.subtitle, self.imageLinks) = (id, etag, title, subtitle, imageLinks)
+        (self.id, self.etag, self.title, self.subtitle, self.imageLinks, self.userReview) = (id, etag, title, subtitle, imageLinks, userReview)
     }
 }

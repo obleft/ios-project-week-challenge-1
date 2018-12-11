@@ -19,9 +19,7 @@ class Model {
     var updateHandler: UpdateHandler? = nil
     
     private var books: [Book] = []
-//    private var allBooksCategory: Category = ["All Books", "Favorites"]
-//    private var category: [Category] = []
-    private var categories: [String] = []
+    private var categories: [Category] = []
     
     // MARK: - Book Methods
     
@@ -48,7 +46,7 @@ class Model {
         return categories.count
     }
     
-    func category(forIndex index: Int) -> String {
+    func category(forIndex index: Int) -> Category {
         return categories[index]
     }
     
@@ -57,15 +55,11 @@ class Model {
         categories.insert(category, at: destinationIndex)
     }
     
-    func setCategory(categories: [String]) {
+    func setCategory(categories: [Category]) {
         Model.shared.categories = categories
     }
     
-    func addCategory(category: String) {
-        categories.append(category)
-    }
-    
-    // MARK: Core Database Management Methods
+    // MARK: Core Firebase Management Methods for Book
     
     
     func addNewBook(book: Book, completion: @escaping () -> Void) {
@@ -111,7 +105,53 @@ class Model {
         delegate?.modelDidUpdate()
     }
     
-    // MARK: Core Search Functionality
+    // MARK: Core Firebase Management Methods for Category
+    
+    func addNewCategory(category: Category, completion: @escaping () -> Void) {
+        
+        // append it to our devices array, updating our local model <-- local
+        categories.append(category)
+        
+        // save it by pushing it to the firebase thing <-- remote
+        FirebaseCategories<Category>.save(item: category){ success in
+            guard success else {return}
+            DispatchQueue.main.async { completion()}
+        }
+        delegate?.modelDidUpdate()
+    }
+    
+    func deleteCategory(at indexPath: IndexPath, completion: @escaping () -> Void) {
+        //
+        let category = categories[indexPath.row]
+        
+        //
+        categories.remove(at: indexPath.row)
+        
+        // remote
+        FirebaseCategories<Category>.delete(item: category){ success in
+            guard success else {return}
+            DispatchQueue.main.async { completion()}
+        }
+        
+    }
+    
+    
+    func updateCategory(for category: Category, completion: @escaping () -> Void) {
+        //
+        
+        // TODO: do we need this?
+        //device.uuid = UUID().uuidString
+        
+        // remote
+        FirebaseCategories<Category>.save(item: category){ success in
+            guard success else {return}
+            DispatchQueue.main.async { completion()}
+        }
+        delegate?.modelDidUpdate()
+    }
+    
+    
+    // MARK: Core Model & Methods for Search
     
     func search(for string: String, completion: @escaping () -> Void) {
         GoogleBooksAPI.searchForBooks(with: string) { results, error in
@@ -127,6 +167,7 @@ class Model {
             self.results = results ?? []
         }
     }
+    
     
     var results: [Book] = [] {
         didSet {
