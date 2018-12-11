@@ -29,10 +29,10 @@ class GoogleBooksAPI {
         // Create the query item using `search` and the search term
         let searchQueryItem = URLQueryItem(name: "q", value: searchTerm)
         
-        // Create the query item using `search` and the search term
+        // Create a query item #2 to get max results (40)
         let searchQueryItem2 = URLQueryItem(name: "maxResults", value: "40")
         
-        // Add in the search term
+        // Add in the search terms
         urlComponents.queryItems = [searchQueryItem,searchQueryItem2]
         
         // Recompose all those individual components back into a fully
@@ -43,7 +43,6 @@ class GoogleBooksAPI {
             return
         }
         
-        print(searchURL)
         // Create a GET request
         var request = URLRequest(url: searchURL)
         request.httpMethod = "GET" // basically "READ"
@@ -77,10 +76,12 @@ class GoogleBooksAPI {
                 // Declare, customize, use the decoder
                 let jsonDecoder = JSONDecoder()
                 
-                // Perform decoding into [Pokemoon] stored in PersonSearchResults
+                // Perform decoding into [Book] stored in Book
                 let searchResults = try jsonDecoder.decode(BookSearchResults.self, from: data)
                 
+                // create an empty array of books
                 var books: [Book] = []
+                
                 
                 for item in searchResults.items{
                     //guard let volumeInfo = item.volumeInfo else {continue}

@@ -20,7 +20,8 @@ class BookDetailViewController: UIViewController {
         guard let book = book else { return }
         titleLabel.text = book.title
         
-        let imageUrlString = book.imageLinks ?? ""
+        var imageUrlString = book.imageLinks ?? ""
+        imageUrlString.insert("s", at: imageUrlString.index(imageUrlString.startIndex, offsetBy: 4))
         
         DispatchQueue.global(qos: .background).async {
             do
@@ -33,7 +34,7 @@ class BookDetailViewController: UIViewController {
             }
             catch {
                 // error
-                fatalError("unable to get Book picture")
+                print("unable to get Book picture")
             }
         }
     }
@@ -43,16 +44,5 @@ class BookDetailViewController: UIViewController {
 
         // Do any additional setup after loading the view.
     }
-    
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
-    }
-    */
 
 }

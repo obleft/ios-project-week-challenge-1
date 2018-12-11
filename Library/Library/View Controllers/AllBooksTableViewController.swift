@@ -54,6 +54,7 @@ class AllBooksTableViewController: UITableViewController {
         cell.titleLabel.text = book.title
         cell.idLabel.text = book.id
         cell.subtitleLabel.text = book.subtitle
+        cell.buyButton.setTitle("Buy", for: .normal)
         
         var imageUrlString = book.imageLinks ?? ""
         imageUrlString.insert("s", at: imageUrlString.index(imageUrlString.startIndex, offsetBy: 4))

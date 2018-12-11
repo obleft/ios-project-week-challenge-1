@@ -10,6 +10,11 @@ import UIKit
 
 class BookshelvesTableViewController: UITableViewController {
 
+
+    @IBAction func addCategory(_ sender: Any) {
+        showInputDialog()
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -22,25 +27,21 @@ class BookshelvesTableViewController: UITableViewController {
 
     // MARK: - Table view data source
 
-    override func numberOfSections(in tableView: UITableView) -> Int {
-        // #warning Incomplete implementation, return the number of sections
-        return 0
-    }
-
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         // #warning Incomplete implementation, return the number of rows
-        return 0
+        return Model.shared.countCategories()
     }
 
-    /*
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "reuseIdentifier", for: indexPath)
+        guard let cell = tableView.dequeueReusableCell(withIdentifier: BookshelvesTableViewCell.reuseIdentifier, for: indexPath) as? BookshelvesTableViewCell else {fatalError("unable to dequeue cell")}
 
+        let category = Model.shared.category(forIndex: indexPath.row)
+        
+        cell.textLabel?.text = category
         // Configure the cell...
 
         return cell
     }
-    */
 
     /*
     // Override to support conditional editing of the table view.
@@ -77,7 +78,6 @@ class BookshelvesTableViewController: UITableViewController {
     }
     */
 
-    /*
     // MARK: - Navigation
 
     // In a storyboard-based application, you will often want to do a little preparation before navigation
@@ -85,6 +85,43 @@ class BookshelvesTableViewController: UITableViewController {
         // Get the new view controller using segue.destination.
         // Pass the selected object to the new view controller.
     }
-    */
+    
+    func showInputDialog() {
+        //Create the alert controller.
+        let alert = UIAlertController(title: "Add New Bookshelf", message: "(category)", preferredStyle: .alert)
+        
+        //Add the text field. You can configure it however you need.
+        alert.addTextField { (userField) in
+            userField.placeholder = "Category Name"
+        }
+        
+        
+        //the cancel action doing nothing
+        let cancelAction = UIAlertAction(title: "Cancel", style: .destructive)
+        
+        //the confirm action taking the inputs
+        let acceptAction = UIAlertAction(title: "Enter", style: .default, handler: { [weak alert] (_) in
+            guard let userField = alert?.textFields?[0] else {
+                print("Issue with Alert TextFields")
+                return
+            }
+            guard let newCategory = userField.text else {
+                print("Issue with TextFields Text")
+                return
+            }
+            
+            Model.shared.addCategory(category: newCategory)
+            self.tableView.reloadData()
+            
+            // Condition Logic
+        })
+        
+        //adding the actions to alertController
+        alert.addAction(acceptAction)
+        alert.addAction(cancelAction)
+        
+        // Presenting the alert
+        self.present(alert, animated: true, completion: nil)
+    }
 
 }

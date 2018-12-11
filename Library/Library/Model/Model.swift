@@ -19,6 +19,11 @@ class Model {
     var updateHandler: UpdateHandler? = nil
     
     private var books: [Book] = []
+//    private var allBooksCategory: Category = ["All Books", "Favorites"]
+//    private var category: [Category] = []
+    private var categories: [String] = []
+    
+    // MARK: - Book Methods
     
     func count() -> Int {
         return books.count
@@ -35,6 +40,29 @@ class Model {
     
     func setBook(books: [Book]) {
         Model.shared.books = books
+    }
+    
+    // MARK: - Catagory Methods
+    
+    func countCategories() -> Int {
+        return categories.count
+    }
+    
+    func category(forIndex index: Int) -> String {
+        return categories[index]
+    }
+    
+    func moveCategory(from index: Int, to destinationIndex: Int) {
+        let category = categories.remove(at: index)
+        categories.insert(category, at: destinationIndex)
+    }
+    
+    func setCategory(categories: [String]) {
+        Model.shared.categories = categories
+    }
+    
+    func addCategory(category: String) {
+        categories.append(category)
     }
     
     // MARK: Core Database Management Methods

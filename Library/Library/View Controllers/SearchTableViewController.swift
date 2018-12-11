@@ -55,18 +55,43 @@ class SearchTableViewController: UITableViewController, UISearchBarDelegate {
         // Configure the cell...
         let book = Model.shared.result(at: indexPath.row)
         
+        // if book is already saved in the model, change the button to red and make sure that the book cannot be saved again
+        for index in 0..<Model.shared.count(){
+            
+            let bookToCheck = Model.shared.book(forIndex: index)
+            
+            
+            if(bookToCheck.id == book.id){
+                print("Book To Check ID:\(bookToCheck.id) is equal to Book ID:\(book.id)")
+                cell.saveButton.backgroundColor = .red
+                cell.saveButton.setTitle("Added", for: .normal)
+                break
+            } else {
+                cell.saveButton.backgroundColor = .blue
+                cell.saveButton.setTitle("Save", for: .normal)
+            }
+        }
         // fill out the cell labels
         cell.titleLabel.text = book.title
         cell.idLabel.text = book.id
         cell.subtitleLabel.text = book.subtitle
-        
+        cell.tableView = self
         cell.row = indexPath.row
         
-        var imageUrlString = book.imageLinks ?? ""
-        imageUrlString.insert("s", at: imageUrlString.index(imageUrlString.startIndex, offsetBy: 4))
-
-        print(imageUrlString)
+        // make sure that the imageLinks value is not nil or ""
+        // if it is, early return the cell
+        if book.imageLinks == nil || book.imageLinks == "" {
+            cell.onComplete = { self.navigationController?.popViewController(animated: true) }
+            return cell // early return cell
+        }
         
+        // add an 's' to conform a image URL resource to https, per Apple requirements
+        var imageUrlString = book.imageLinks ?? "not_a_url"
+        if imageUrlString.count > 1 {
+            imageUrlString.insert("s", at: imageUrlString.index(imageUrlString.startIndex, offsetBy: 4))
+        }
+        
+        // try to get the image and if successful assign it to bookImageView.image
         DispatchQueue.global(qos: .background).async {
             do
             {
@@ -78,7 +103,7 @@ class SearchTableViewController: UITableViewController, UISearchBarDelegate {
             }
             catch {
                 // error
-                print("unable to get Book picture")
+                print("unable to get book thumbnail")
             }
         }
         

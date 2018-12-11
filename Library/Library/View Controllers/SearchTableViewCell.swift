@@ -10,7 +10,9 @@ import UIKit
 
 class SearchTableViewCell: UITableViewCell {
     
+    
     static let reuseIdentifier = "searchResultCell"
+    var tableView: SearchTableViewController?
     var row: Int = 0
     
     var onComplete: (() -> Void)? = nil
@@ -22,10 +24,14 @@ class SearchTableViewCell: UITableViewCell {
     
     @IBAction func saveToCollection(_ sender: Any) {
         
+        guard let titleText = saveButton.currentTitle else {return}
+        if titleText == "Added"{
+            // create the alert
+            return
+        }
         let book = Model.shared.results[row]
-        Model.shared.deleteResults()
-        Model.shared.addNewBook(book: book){}
+        Model.shared.addNewBook(book: book){
+        }
     }
-    
-    
+
 }
