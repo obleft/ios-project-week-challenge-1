@@ -26,15 +26,15 @@ class Book: Codable & FirebaseItem {
 //    let allowAnonLogging: Bool
 //    let contentVersion: String
 //    let panelizationSummary: PanelizationSummary
-//    let imageLinks: ImageLinks?
+    let imageLinks: String?
 //    let language: Language
 //    let previewLink: String
 //    let infoLink: String
 //    let canonicalVolumeLink: String
     
-    init(id: String, etag: String, title: String, subtitle: String) {
+    init(id: String, etag: String, title: String, subtitle: String, imageLinks: String) {
         // let types = types[0] ?? ""
         // let abilities = abilities[0] ?? ""
-        (self.id, self.etag, self.title, self.subtitle) = (id, etag, title, subtitle)
+        (self.id, self.etag, self.title, self.subtitle, self.imageLinks) = (id, etag, title, subtitle, imageLinks)
     }
 }

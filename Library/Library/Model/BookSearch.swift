@@ -21,7 +21,7 @@ struct Item: Codable {
 }
 
 struct AccessInfo: Codable {
-    let country: Country
+    let country: Country?
     let viewability: Viewability
     let embeddable, publicDomain: Bool
     let textToSpeechPermission: TextToSpeechPermission?
@@ -39,6 +39,8 @@ enum AccessViewStatus: String, Codable {
 
 enum Country: String, Codable {
     case gb = "GB"
+    case us = "US"
+    case nl = "NL"
 }
 
 struct Epub: Codable {
@@ -62,7 +64,7 @@ enum Kind: String, Codable {
 }
 
 struct SaleInfo: Codable {
-    let country: Country
+    let country: Country?
     let saleability: Saleability
     let isEbook: Bool
     let listPrice, retailPrice: SaleInfoListPrice?
@@ -77,6 +79,8 @@ struct SaleInfoListPrice: Codable {
 
 enum CurrencyCode: String, Codable {
     case gbp = "GBP"
+    case usd = "USD"
+    case eur = "EUR"
 }
 
 struct Offer: Codable {
@@ -112,7 +116,7 @@ struct VolumeInfo: Codable {
     let subtitle: String?
     let authors: [String]?
     let publisher, publishedDate, description: String?
-    let industryIdentifiers: [IndustryIdentifier]
+    let industryIdentifiers: [IndustryIdentifier]?
     let readingModes: ReadingModes
     let pageCount: Int?
     let printType: PrintType
@@ -145,10 +149,12 @@ enum TypeEnum: String, Codable {
 
 enum Language: String, Codable {
     case en = "en"
+    case nl = "nl"
 }
 
 enum MaturityRating: String, Codable {
     case notMature = "NOT_MATURE"
+    case mature = "MATURE"
 }
 
 struct PanelizationSummary: Codable {

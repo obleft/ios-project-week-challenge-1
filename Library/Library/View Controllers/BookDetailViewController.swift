@@ -10,15 +10,33 @@ import UIKit
 
 class BookDetailViewController: UIViewController {
 
-    typealias Book = VolumeInfo
-    var pokemon: Book?
-    
+    var book: Book?
+    @IBOutlet weak var titleLabel: UILabel!
+    @IBOutlet weak var bookImageView: UIImageView!
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         
+        guard let book = book else { return }
+        titleLabel.text = book.title
+        
+        let imageUrlString = book.imageLinks ?? ""
+        
+        DispatchQueue.global(qos: .background).async {
+            do
+            {
+                let data = try Data.init(contentsOf: URL.init(string:imageUrlString)!)
+                DispatchQueue.main.async {
+                    let image: UIImage = UIImage(data: data)!
+                    self.bookImageView.image = image
+                }
+            }
+            catch {
+                // error
+                fatalError("unable to get Book picture")
+            }
+        }
     }
-
     
     override func viewDidLoad() {
         super.viewDidLoad()

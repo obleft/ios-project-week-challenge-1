@@ -29,8 +29,11 @@ class GoogleBooksAPI {
         // Create the query item using `search` and the search term
         let searchQueryItem = URLQueryItem(name: "q", value: searchTerm)
         
+        // Create the query item using `search` and the search term
+        let searchQueryItem2 = URLQueryItem(name: "maxResults", value: "40")
+        
         // Add in the search term
-        urlComponents.queryItems = [searchQueryItem]
+        urlComponents.queryItems = [searchQueryItem,searchQueryItem2]
         
         // Recompose all those individual components back into a fully
         // realized search URL
@@ -98,7 +101,7 @@ class GoogleBooksAPI {
 //                    //let maturityRating: MaturityRating
 //                    let allowAnonLogging: Bool = item.volumeInfo.allowAnonLogging
 //                    let contentVersion: String = item.volumeInfo.contentVersion
-//                    //let imageLinks: ImageLinks
+                    let imageLinks: String = item.volumeInfo.imageLinks?.thumbnail ?? ""
 //                    //let language: Language
 //                    let previewLink : String = item.volumeInfo.previewLink
 //                    let infoLink: String = item.volumeInfo.infoLink
@@ -107,9 +110,8 @@ class GoogleBooksAPI {
                     //let ratingsCount: Int? = item.volumeInfo.ratingsCount?
                     //let panelizationSummary: PanelizationSummary?
                 
-                    let book = Book(id: id, etag: etag, title: title, subtitle: subtitle)
+                    let book = Book(id: id, etag: etag, title: title, subtitle: subtitle, imageLinks: imageLinks)
                     
-                    print(book.title)
                     books.append(book)
                 }
                 

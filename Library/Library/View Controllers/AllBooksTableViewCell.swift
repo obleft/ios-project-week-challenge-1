@@ -10,15 +10,11 @@ import UIKit
 
 class AllBooksTableViewCell: UITableViewCell {
 
-    override func awakeFromNib() {
-        super.awakeFromNib()
-        // Initialization code
-    }
-
-    override func setSelected(_ selected: Bool, animated: Bool) {
-        super.setSelected(selected, animated: animated)
-
-        // Configure the view for the selected state
-    }
+    static let reuseIdentifier = "allBooksCell"
+    @IBOutlet weak var titleLabel: UILabel!
+    @IBOutlet weak var subtitleLabel: UILabel!
+    @IBOutlet weak var idLabel: UILabel!
+    @IBOutlet weak var buyButton: UIButton!
+    @IBOutlet weak var bookImageView: UIImageView!
 
 }

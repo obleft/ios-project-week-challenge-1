@@ -25,7 +25,6 @@ class Model {
     }
     
     func book(forIndex index: Int) -> Book {
-        print(index)
         return books[index]
     }
     
