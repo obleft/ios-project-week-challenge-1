@@ -31,6 +31,9 @@
 		D13C960421BF4FC500E53C2B /* Book.swift in Sources */ = {isa = PBXBuildFile; fileRef = D13C960321BF4FC500E53C2B /* Book.swift */; };
 		D13C960821C05AED00E53C2B /* Category.swift in Sources */ = {isa = PBXBuildFile; fileRef = D13C960721C05AED00E53C2B /* Category.swift */; };
 		D13C960A21C0704E00E53C2B /* FirebaseCategories.swift in Sources */ = {isa = PBXBuildFile; fileRef = D13C960921C0704E00E53C2B /* FirebaseCategories.swift */; };
+		D144657121C1AC69003B398B /* AddToBookshelfCellDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D144657021C1AC69003B398B /* AddToBookshelfCellDelegate.swift */; };
+		D17E788F21C17B9500E014D1 /* AddToBookshelfTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D17E788E21C17B9500E014D1 /* AddToBookshelfTableViewController.swift */; };
+		D17E789121C17BAF00E014D1 /* AddToBookshelfTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D17E789021C17BAF00E014D1 /* AddToBookshelfTableViewCell.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -61,6 +64,9 @@
 		D13C960321BF4FC500E53C2B /* Book.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Book.swift; sourceTree = "<group>"; };
 		D13C960721C05AED00E53C2B /* Category.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Category.swift; sourceTree = "<group>"; };
 		D13C960921C0704E00E53C2B /* FirebaseCategories.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirebaseCategories.swift; sourceTree = "<group>"; };
+		D144657021C1AC69003B398B /* AddToBookshelfCellDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddToBookshelfCellDelegate.swift; sourceTree = "<group>"; };
+		D17E788E21C17B9500E014D1 /* AddToBookshelfTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddToBookshelfTableViewController.swift; sourceTree = "<group>"; };
+		D17E789021C17BAF00E014D1 /* AddToBookshelfTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddToBookshelfTableViewCell.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -94,6 +100,7 @@
 			isa = PBXGroup;
 			children = (
 				D13C936921BEDDAB00E53C2B /* AppDelegate.swift */,
+				D144657021C1AC69003B398B /* AddToBookshelfCellDelegate.swift */,
 				D13C937E21BEE7ED00E53C2B /* Networking */,
 				D13C937D21BEE7EB00E53C2B /* Model */,
 				D13C937C21BEE7E800E53C2B /* View Controllers */,
@@ -126,6 +133,8 @@
 				D13C939D21BF0A5B00E53C2B /* BookDetailViewController.swift */,
 				D13C95FB21BF14D400E53C2B /* BookshelvesDetailTableViewController.swift */,
 				D13C95FD21BF14E900E53C2B /* BookshelvesDetailTableViewCell.swift */,
+				D17E788E21C17B9500E014D1 /* AddToBookshelfTableViewController.swift */,
+				D17E789021C17BAF00E014D1 /* AddToBookshelfTableViewCell.swift */,
 			);
 			path = "View Controllers";
 			sourceTree = "<group>";
@@ -230,6 +239,7 @@
 				D13C939221BF08FD00E53C2B /* AllBooksTableViewController.swift in Sources */,
 				D13C938E21BF083A00E53C2B /* Firebase.swift in Sources */,
 				D13C960221BF4AE300E53C2B /* FirebaseItem.swift in Sources */,
+				D17E788F21C17B9500E014D1 /* AddToBookshelfTableViewController.swift in Sources */,
 				D13C938A21BF081D00E53C2B /* BookSearchResults.swift in Sources */,
 				D13C95FC21BF14D400E53C2B /* BookshelvesDetailTableViewController.swift in Sources */,
 				D13C960A21C0704E00E53C2B /* FirebaseCategories.swift in Sources */,
@@ -241,11 +251,13 @@
 				D13C960421BF4FC500E53C2B /* Book.swift in Sources */,
 				D13C936A21BEDDAB00E53C2B /* AppDelegate.swift in Sources */,
 				D13C939821BF096900E53C2B /* SearchTableViewController.swift in Sources */,
+				D17E789121C17BAF00E014D1 /* AddToBookshelfTableViewCell.swift in Sources */,
 				D13C939021BF08AB00E53C2B /* GoogleBooksAPI.swift in Sources */,
 				D13C95FE21BF14E900E53C2B /* BookshelvesDetailTableViewCell.swift in Sources */,
 				D13C938621BF07EE00E53C2B /* ModelUpdateClient.swift in Sources */,
 				D13C960821C05AED00E53C2B /* Category.swift in Sources */,
 				D13C938421BF07DD00E53C2B /* Model.swift in Sources */,
+				D144657121C1AC69003B398B /* AddToBookshelfCellDelegate.swift in Sources */,
 				D13C939E21BF0A5B00E53C2B /* BookDetailViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

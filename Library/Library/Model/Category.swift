@@ -10,7 +10,7 @@ import Foundation
 
 class Category: Codable & FirebaseItem{
     let name: String
-    let books: [Book]?
+    var books: [Book]?
     var id: String
     
     init(id: String,name: String,books: [Book]?) {

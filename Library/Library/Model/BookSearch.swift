@@ -122,7 +122,7 @@ struct VolumeInfo: Codable {
     let industryIdentifiers: [IndustryIdentifier]?
     let readingModes: ReadingModes
     let pageCount: Int?
-    let printType: PrintType
+    let printType: PrintType?
     let categories: [String]?
     let maturityRating: MaturityRating
     let allowAnonLogging: Bool
@@ -154,6 +154,7 @@ enum Language: String, Codable {
     case en = "en"
     case nl = "nl"
     case de = "de"
+    case fr = "fr"
 }
 
 enum MaturityRating: String, Codable {
@@ -167,6 +168,7 @@ struct PanelizationSummary: Codable {
 
 enum PrintType: String, Codable {
     case book = "BOOK"
+    case magazine = "MAGAZINE"
 }
 
 struct ReadingModes: Codable {

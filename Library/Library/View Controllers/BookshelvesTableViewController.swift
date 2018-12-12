@@ -23,7 +23,7 @@ class BookshelvesTableViewController: UITableViewController {
         var index = 0
         FirebaseCategories<Category>.fetchRecords { categories in
             if let categories = categories {
-                Model.shared.setCategory(categories: categories)
+                Model.shared.setCategories(categories: categories)
                 
                 // Comment this out to show what it looks like while waiting
                 DispatchQueue.main.async {
@@ -116,6 +116,17 @@ class BookshelvesTableViewController: UITableViewController {
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         // Get the new view controller using segue.destination.
         // Pass the selected object to the new view controller.
+        
+        guard let indexPath = tableView.indexPathForSelectedRow
+            else { return }
+        guard let destination = segue.destination as? BookshelvesDetailTableViewController
+            else { return }
+        
+        let category = Model.shared.category(forIndex: indexPath.row)
+        destination.category = category
+        destination.title = category.name
+        
+        
     }
     
     func showInputDialog() {
@@ -142,7 +153,7 @@ class BookshelvesTableViewController: UITableViewController {
                 return
             }
             
-            let newCategory = Category(id: "", name: newCategoryName, books: nil)
+            let newCategory = Category(id: "", name: newCategoryName.capitalized, books: nil)
             
             Model.shared.addNewCategory(category: newCategory){
                 DispatchQueue.main.async {

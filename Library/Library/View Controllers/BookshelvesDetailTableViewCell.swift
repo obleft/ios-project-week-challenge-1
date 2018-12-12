@@ -10,15 +10,41 @@ import UIKit
 
 class BookshelvesDetailTableViewCell: UITableViewCell {
 
-    override func awakeFromNib() {
-        super.awakeFromNib()
-        // Initialization code
+    var book: Book?
+    static let reuseIdentifier = "bookshelvesDetailCell"
+    @IBOutlet weak var titleLabel: UILabel!
+    @IBOutlet weak var subtitleLabel: UILabel!
+    @IBOutlet weak var isbn_13Label: UILabel!
+    @IBOutlet weak var authorLabel: UILabel!
+    @IBOutlet weak var bookImageView: UIImageView!
+    @IBOutlet weak var buyButton: UIButton!
+    @IBOutlet weak var hasReadButton: UIButton!
+    
+    @IBAction func hasReadButtonClicked(_ sender: Any) {
+        
+        guard let book = book else {fatalError("unable to access book before editing has read property")}
+        
+        if book.hasRead == true {
+            hasReadButton.backgroundColor = .blue
+            hasReadButton.setTitle("Mark Read", for: .normal)
+            book.hasRead = false
+            
+            // update the local data model
+            Model.shared.setBook(book: book)
+            
+            // update firebase
+            Model.shared.updateBook(for: book){}
+        } else {
+            hasReadButton.backgroundColor = .red
+            hasReadButton.setTitle("Mark Unread", for: .normal)
+            book.hasRead = true
+            
+            // update the local data model
+            Model.shared.setBook(book: book)
+            
+            // update firebase
+            Model.shared.updateBook(for: book){}
+        }
     }
-
-    override func setSelected(_ selected: Bool, animated: Bool) {
-        super.setSelected(selected, animated: animated)
-
-        // Configure the view for the selected state
-    }
-
+    
 }

@@ -51,11 +51,6 @@ class Model {
         fatalError("Error: Trying to set a book that doesn't exist")
     }
     
-    func setBookHasValue(book: Book, forIndex index: Int){
-//        Model.sh
-        
-    }
-    
     // MARK: - Catagory Methods
     
     func countCategories() -> Int {
@@ -71,7 +66,7 @@ class Model {
         categories.insert(category, at: destinationIndex)
     }
     
-    func setCategory(categories: [Category]) {
+    func setCategories(categories: [Category]) {
         Model.shared.categories = categories
     }
     
@@ -163,6 +158,32 @@ class Model {
             guard success else {return}
             DispatchQueue.main.async { completion()}
         }
+        delegate?.modelDidUpdate()
+    }
+    
+    func removeBookFromAllCategories(for book: Book, completion: @escaping () -> Void) {
+        
+        // remove all the references to the to-be-deleted book
+        for category in categories{
+            if var books = category.books{
+                if books.count > 0{
+                    var adjuster: Int = 0
+                    for index in 0..<books.count{
+                        if books[index - adjuster].id == book.id{
+                            print("\(books[index - adjuster].id) and \(book.id) ")
+                            books.remove(at: index - adjuster)
+                            adjuster += 1
+                            category.books = books
+                            FirebaseCategories<Category>.save(item: category){ success in
+                                guard success else {return}
+                                DispatchQueue.main.async { completion()}
+                            }
+                        }
+                    }
+                }
+            }
+        }
+        
         delegate?.modelDidUpdate()
     }
     
