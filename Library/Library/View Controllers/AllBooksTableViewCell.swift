@@ -15,7 +15,7 @@ class AllBooksTableViewCell: UITableViewCell {
     static let reuseIdentifier = "allBooksCell"
     @IBOutlet weak var titleLabel: UILabel!
     @IBOutlet weak var subtitleLabel: UILabel!
-    @IBOutlet weak var idLabel: UILabel!
+    @IBOutlet weak var isbn_13Label: UILabel!
     @IBOutlet weak var authorLabel: UILabel!
     @IBOutlet weak var buyButton: UIButton!
     @IBOutlet weak var bookImageView: UIImageView!

@@ -54,7 +54,8 @@ class AllBooksTableViewController: UITableViewController {
         cell.book = book
         // fill out the cell labels
         cell.titleLabel.text = book.title
-        cell.idLabel.text = book.id
+        cell.isbn_13Label.text = book.ISBN_13
+        cell.authorLabel.text = book.authors
         cell.subtitleLabel.text = book.subtitle
         cell.buyButton.setTitle("Buy", for: .normal)
         

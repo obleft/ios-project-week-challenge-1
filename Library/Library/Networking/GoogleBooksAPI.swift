@@ -94,7 +94,36 @@ class GoogleBooksAPI {
                     let subtitle: String = item.volumeInfo.subtitle ?? ""
                     let etag: String = item.etag
                     let id: String = item.id
-                    //let authors: [String]
+                    
+                    var authors = ""
+                    
+                    // decompose authors string Array (if applicable)
+                    if let authorsArray = item.volumeInfo.authors {
+                        if authorsArray.count == 1 {
+                            authors = "\(authorsArray[0])"
+                        } else if authorsArray.count == 2{
+                            authors = "\(authorsArray[0]) and \(authorsArray[1])"
+                        } else {
+                            for index in 0..<(authorsArray.count - 1){
+                                authors += "\(authorsArray[index]), "
+                            }
+                            authors += "and \(String(describing: authorsArray.last))"
+                        }
+                    }
+                    
+                    var ISBN_13 = ""
+                    // decompose isbn Array (if applicable)
+                    if let isbnArray = item.volumeInfo.industryIdentifiers {
+                        for index in 0..<(isbnArray.count){
+                            
+                            if isbnArray[index].type.rawValue == "ISBN_13"{
+                                ISBN_13 = isbnArray[index].identifier
+                                break
+                            }
+                        }
+                        
+                    }
+                    
 //                    let publisher: String? = item.volumeInfo.publisher
 //                    let publishedDate: String? = item.volumeInfo.publishedDate
 //                    let description: String? = item.volumeInfo.description
@@ -117,10 +146,9 @@ class GoogleBooksAPI {
                     var userReview = ""
                     var hasRead = false
                     // get isbn from industry identifiers later
-                    var ISBN_13 = "1111111111111"
                     
                 
-                    let book = Book(id: id, etag: etag, title: title, subtitle: subtitle, imageLinks: imageLinks, hasRead: hasRead, userReview: userReview, ISBN_13: ISBN_13)
+                    let book = Book(id: id, etag: etag, title: title, subtitle: subtitle, authors : authors, imageLinks: imageLinks, hasRead: hasRead, userReview: userReview, ISBN_13: ISBN_13)
                     
                     books.append(book)
                 }
