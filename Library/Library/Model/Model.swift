@@ -131,12 +131,12 @@ class Model {
         delegate?.modelDidUpdate()
     }
     
-    func deleteCategory(at indexPath: IndexPath, completion: @escaping () -> Void) {
+    func deleteCategory(at index: Int, completion: @escaping () -> Void) {
         //
-        let category = categories[indexPath.row]
+        let category = categories[index]
         
         //
-        categories.remove(at: indexPath.row)
+        categories.remove(at: index)
         
         // remote
         FirebaseCategories<Category>.delete(item: category){ success in
@@ -187,6 +187,29 @@ class Model {
         delegate?.modelDidUpdate()
     }
     
+    func removeBookFromCategory(for book: Book, in category: Category, completion: @escaping () -> Void) {
+        
+        // remove all the references to the to-be-deleted book
+        if var books = category.books{
+            if books.count > 0{
+                var adjuster: Int = 0
+                for index in 0..<books.count{
+                    if books[index - adjuster].id == book.id{
+                        print("\(books[index - adjuster].id) and \(book.id) ")
+                        books.remove(at: index - adjuster)
+                        adjuster += 1
+                        category.books = books
+                        FirebaseCategories<Category>.save(item: category){ success in
+                            guard success else {return}
+                            DispatchQueue.main.async { completion()}
+                        }
+                    }
+                }
+            }
+        }
+        
+        delegate?.modelDidUpdate()
+    }
     
     // MARK: Core Model & Methods for Search
     

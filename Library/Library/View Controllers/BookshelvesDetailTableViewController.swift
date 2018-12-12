@@ -131,10 +131,16 @@ class BookshelvesDetailTableViewController: UITableViewController {
         
         guard editingStyle == .delete else { return }
         
-        // FIXME: Delete an item, update Firebase, update model, and reload data
-        Model.shared.deleteBook(at: indexPath){
-            self.tableView.reloadData()
+        guard let category = category else {fatalError("unable to access category")}
+        guard let books = category.books else {fatalError("unable to access category")}
+        
+        let book = books[indexPath.row]
+        
+        // remove book from all categories that it exists in
+        Model.shared.removeBookFromCategory(for: book, in: category) {
+            tableView.reloadData()
         }
+        
     }
 
     
