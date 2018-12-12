@@ -9,7 +9,6 @@
 import UIKit
 
 class AddToBookshelfTableViewController: UITableViewController, AddToBookshelfCellDelegate {
-    
     var category: Category?
     
     override func viewWillAppear(_ animated: Bool) {
@@ -56,6 +55,9 @@ class AddToBookshelfTableViewController: UITableViewController, AddToBookshelfCe
         // Configure the cell...
         let book = Model.shared.book(forIndex: indexPath.row)
         
+        // set the cell's delegate
+        cell.delegateVariable = self
+        
         // assign the book to the cell's book
         cell.book = book
         cell.category = category
@@ -89,8 +91,8 @@ class AddToBookshelfTableViewController: UITableViewController, AddToBookshelfCe
         return cell
     }
 
-    func addBookToCategoryClicked(on cell: AddToBookshelfTableViewCell) {
-        tableView.reloadData()
+    func addBookToCategoryClicked(onCell: AddToBookshelfTableViewCell) {
+        tableView?.reloadData()
     }
     
 }

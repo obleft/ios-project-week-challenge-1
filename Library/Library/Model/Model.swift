@@ -170,7 +170,6 @@ class Model {
                     var adjuster: Int = 0
                     for index in 0..<books.count{
                         if books[index - adjuster].id == book.id{
-                            print("\(books[index - adjuster].id) and \(book.id) ")
                             books.remove(at: index - adjuster)
                             adjuster += 1
                             category.books = books
@@ -195,7 +194,7 @@ class Model {
                 var adjuster: Int = 0
                 for index in 0..<books.count{
                     if books[index - adjuster].id == book.id{
-                        print("\(books[index - adjuster].id) and \(book.id) ")
+                        
                         books.remove(at: index - adjuster)
                         adjuster += 1
                         category.books = books

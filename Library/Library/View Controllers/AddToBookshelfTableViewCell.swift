@@ -13,7 +13,7 @@ class AddToBookshelfTableViewCell: UITableViewCell {
     static let reuseIdentifier = "addToBookshelfCell"
     var book: Book?
     var category: Category?
-    weak var delegateVariable: AddToBookshelfTableViewCell?
+    weak var delegateVariable: AddToBookshelfCellDelegate?
     
     @IBOutlet weak var titleLabel: UILabel!
     @IBOutlet weak var subtitleLabel: UILabel!
@@ -22,7 +22,7 @@ class AddToBookshelfTableViewCell: UITableViewCell {
     @IBOutlet weak var bookImageView: UIImageView!
     @IBOutlet weak var addToCategoryButton: UIButton!
     
-    @IBAction func addBookToCategoryClicked(_ sender: Any) {
+    @IBAction func addBookToCategoryClicked(_ sender: UIButton) {
  
         guard let book = book else {fatalError("unable to access book before editing has read property")}
         guard let category = category else {fatalError("unable to access category")}
@@ -32,13 +32,17 @@ class AddToBookshelfTableViewCell: UITableViewCell {
             books.append(book)
             category.books = books
             Model.shared.updateCategory(for: category) {
+                self.delegateVariable?.addBookToCategoryClicked(onCell: self)
             }
         } else{ // if it is nil or empty
             var books: [Book] = []
             books.append(book)
             category.books = books
             Model.shared.updateCategory(for: category) {
+                self.delegateVariable?.addBookToCategoryClicked(onCell: self)
             }
+            
+            
         }
         
         

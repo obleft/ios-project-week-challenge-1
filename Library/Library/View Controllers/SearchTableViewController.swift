@@ -62,7 +62,6 @@ class SearchTableViewController: UITableViewController, UISearchBarDelegate {
             
             
             if(bookToCheck.id == book.id){
-                print("Book To Check ID:\(bookToCheck.id) is equal to Book ID:\(book.id)")
                 cell.saveButton.backgroundColor = .red
                 cell.saveButton.setTitle("Added", for: .normal)
                 break
@@ -111,6 +110,21 @@ class SearchTableViewController: UITableViewController, UISearchBarDelegate {
         
 
         return cell
+    }
+    
+    func showInputDialog() {
+        //Create the alert controller.
+        let alert = UIAlertController(title: "Book already Added", message: "", preferredStyle: .alert)
+        
+        
+        //the accept action doing nothing
+        let acceptAction = UIAlertAction(title: "Accept", style: .destructive)
+        
+        //adding the actions to alertController
+        alert.addAction(acceptAction)
+        
+        // Presenting the alert
+        self.present(alert, animated: true, completion: nil)
     }
 
 

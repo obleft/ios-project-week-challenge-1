@@ -9,6 +9,6 @@
 import Foundation
 
 protocol AddToBookshelfCellDelegate: class {
-    func addBookToCategoryClicked(on cell: AddToBookshelfTableViewCell)
+    func addBookToCategoryClicked(onCell: AddToBookshelfTableViewCell)
 }
 

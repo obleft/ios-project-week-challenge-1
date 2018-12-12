@@ -29,6 +29,8 @@ class SearchTableViewCell: UITableViewCell {
             // create the alert
             return
         }
+        saveButton.backgroundColor = .red
+        saveButton.setTitle("Added", for: .normal)
         let book = Model.shared.results[row]
         Model.shared.addNewBook(book: book){
         }
