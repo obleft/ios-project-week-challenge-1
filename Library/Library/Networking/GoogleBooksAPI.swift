@@ -114,9 +114,13 @@ class GoogleBooksAPI {
 //                    //let averageRating: Double? = item.volumeInfo.averageRating?
                     //let ratingsCount: Int? = item.volumeInfo.ratingsCount?
                     //let panelizationSummary: PanelizationSummary?
-                    let userReview = ""
+                    var userReview = ""
+                    var hasRead = false
+                    // get isbn from industry identifiers later
+                    var ISBN_13 = "1111111111111"
+                    
                 
-                    let book = Book(id: id, etag: etag, title: title, subtitle: subtitle, imageLinks: imageLinks, userReview: userReview)
+                    let book = Book(id: id, etag: etag, title: title, subtitle: subtitle, imageLinks: imageLinks, hasRead: hasRead, userReview: userReview, ISBN_13: ISBN_13)
                     
                     books.append(book)
                 }

@@ -22,7 +22,7 @@ class AllBooksTableViewController: UITableViewController {
         // Note: this may be significantly delayed.
         Firebase<Book>.fetchRecords { books in
             if let books = books {
-                Model.shared.setBook(books: books)
+                Model.shared.setBooks(books: books)
                 
                 // Comment this out to show what it looks like while waiting
                 DispatchQueue.main.async {
@@ -50,11 +50,19 @@ class AllBooksTableViewController: UITableViewController {
         // Configure the cell...
         let book = Model.shared.book(forIndex: indexPath.row)
         
+        // assign the book to the cell's book
+        cell.book = book
         // fill out the cell labels
         cell.titleLabel.text = book.title
         cell.idLabel.text = book.id
         cell.subtitleLabel.text = book.subtitle
         cell.buyButton.setTitle("Buy", for: .normal)
+        
+        // if the book has been read, update the has read button
+        if book.hasRead == true {
+            cell.hasReadButton.backgroundColor = .red
+            cell.hasReadButton.setTitle("Mark Unread", for: .normal)
+        }
         
         var imageUrlString = book.imageLinks ?? ""
         imageUrlString.insert("s", at: imageUrlString.index(imageUrlString.startIndex, offsetBy: 4))
@@ -100,6 +108,7 @@ class AllBooksTableViewController: UITableViewController {
         guard let destination = segue.destination as? BookDetailViewController
             else { return }
         
+        destination.row = indexPath.row
         destination.book = Model.shared.book(forIndex: indexPath.row)
     }
 

@@ -36,8 +36,24 @@ class Model {
         books.insert(book, at: destinationIndex)
     }
     
-    func setBook(books: [Book]) {
+    func setBooks(books: [Book]) {
         Model.shared.books = books
+    }
+    
+    func setBook(book: Book) {
+        
+        for index in 0..<books.count {
+            if books[index].id == book.id{
+                books[index] = book
+                return
+            }
+        }
+        fatalError("Error: Trying to set a book that doesn't exist")
+    }
+    
+    func setBookHasValue(book: Book, forIndex index: Int){
+//        Model.sh
+        
     }
     
     // MARK: - Catagory Methods
