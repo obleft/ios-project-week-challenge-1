@@ -7,8 +7,9 @@
 //
 
 import UIKit
+import SafariServices
 
-class BookshelvesDetailTableViewController: UITableViewController {
+class BookshelvesDetailTableViewController: UITableViewController, BookshelvesDetailCellDelegate {
 
     var category: Category?
     
@@ -64,6 +65,9 @@ class BookshelvesDetailTableViewController: UITableViewController {
         
         // assign the book to the cell's book
         cell.book = book
+        
+        // set the delegate
+        cell.delegateVariable = self
         // fill out the cell labels
         
         cell.titleLabel.text = book.title
@@ -124,6 +128,12 @@ class BookshelvesDetailTableViewController: UITableViewController {
         
     }
 
+    func buyButtonClicked(onCell: BookshelvesDetailTableViewCell, with url: URL) {
+        
+        let svc = SFSafariViewController(url: url)
+        present(svc, animated: true, completion: nil)
+        
+    }
     
     // MARK: - Navigation
 

@@ -13,6 +13,7 @@ class SearchTableViewCell: UITableViewCell {
     
     static let reuseIdentifier = "searchResultCell"
     var tableView: SearchTableViewController?
+    var delegateVariable: SearchTableCellDelegate?
     var row: Int = 0
     
     var onComplete: (() -> Void)? = nil
@@ -27,7 +28,7 @@ class SearchTableViewCell: UITableViewCell {
         guard let titleText = saveButton.currentTitle else {return}
         if titleText == "Added"{
             // create the alert
-            return
+            delegateVariable?.saveToCollection(onCell: self)
         }
         saveButton.backgroundColor = .red
         saveButton.setTitle("Added", for: .normal)

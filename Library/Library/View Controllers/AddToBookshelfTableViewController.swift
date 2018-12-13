@@ -13,7 +13,7 @@ class AddToBookshelfTableViewController: UITableViewController, AddToBookshelfCe
     // declare vars
     var category: Category?
     var booksAvailableToAdd: [Book] = []
-    
+    let books = Model.shared.getBooks()
 
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
@@ -60,40 +60,49 @@ class AddToBookshelfTableViewController: UITableViewController, AddToBookshelfCe
 
         // Configure the cell...
         guard let category = category else {fatalError("failed to get category")}
-        let books = Model.shared.getBooks()
-        booksAvailableToAdd = books
         
         // create the booksAvailableToAdd array
+        var booksToExclude: [Book] = []
+        // get array of book ids that should not be included in the list
         if let booksInCategory = category.books{
             for bookInCategory in booksInCategory{
-//                var adjuster = 0
-                for index in 0..<booksAvailableToAdd.count{
-                    if books[index].id == bookInCategory.id{
-                        self.booksAvailableToAdd.remove(at: (index))
-                    }
-                }
+                booksToExclude.append(bookInCategory)
             }
         }
+        
+        booksAvailableToAdd = books.filter{
+            let dict = $0
+            return !booksToExclude.contains{dict == $0}
+        }
+//        for index in 0..<books.count {
+//            for exludedId in booksIdsToExclude{
+//                var adjuster = 0
+//                if books[index].id == exludedId{
+//                    booksAvailableToAdd.remove(at: index - adjuster)
+//                    adjuster += 1
+//                }
+//            }
+//        }
         
         
         let book = booksAvailableToAdd[indexPath.row]
         // set the cell's delegate
         cell.delegateVariable = self
-        
+
         // assign the book to the cell's book
         cell.book = book
         cell.category = category
-        
+
         // fill out the cell labels
         cell.titleLabel.text = book.title
         cell.isbn_13Label.text = book.ISBN_13
         cell.authorLabel.text = book.authors
         cell.subtitleLabel.text = book.subtitle
-        
-        
+
+
         if var imageUrlString = book.imageLinks, imageUrlString != "" {
             imageUrlString.insert("s", at: imageUrlString.index(imageUrlString.startIndex, offsetBy: 4))
-            
+
             DispatchQueue.global(qos: .background).async {
                 do
                 {

@@ -8,10 +8,13 @@
 
 import Foundation
 
-class Book: Codable & FirebaseItem {
+class Book: Codable & Equatable & FirebaseItem {
+    
+    static func == (lhs: Book, rhs: Book) -> Bool {
+        return lhs.id == rhs.id
+    }
+    
 
-    
-    
     var id: String
     let etag: String
     let title, subtitle: String

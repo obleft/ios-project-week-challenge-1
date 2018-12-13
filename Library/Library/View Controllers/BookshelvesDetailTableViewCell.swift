@@ -11,6 +11,8 @@ import UIKit
 class BookshelvesDetailTableViewCell: UITableViewCell {
 
     var book: Book?
+    weak var delegateVariable: BookshelvesDetailCellDelegate?
+    
     static let reuseIdentifier = "bookshelvesDetailCell"
     @IBOutlet weak var titleLabel: UILabel!
     @IBOutlet weak var subtitleLabel: UILabel!
@@ -44,6 +46,20 @@ class BookshelvesDetailTableViewCell: UITableViewCell {
             
             // update firebase
             Model.shared.updateBook(for: book){}
+        }
+    }
+    
+    @IBAction func buyButtonClicked(_ sender: Any) {
+        
+        guard let book = book else {fatalError("unable to access book")}
+        
+        if let isbn = book.ISBN_13, isbn != ""{
+            var strURlToOpen = "https://www.amazon.com/s?field-keywords="
+            strURlToOpen += isbn
+            guard let url = URL(string: strURlToOpen) else {return}
+            
+            delegateVariable?.buyButtonClicked(onCell: self, with: url)
+            
         }
     }
     

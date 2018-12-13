@@ -514,6 +514,9 @@
                                                             <state key="normal" title="Buy">
                                                                 <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                             </state>
+                                                            <connections>
+                                                                <action selector="buyButtonClicked:" destination="8oc-8i-fpj" eventType="touchUpInside" id="Jfp-yc-Px9"/>
+                                                            </connections>
                                                         </button>
                                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="750" text="ISBN_13:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="6Aa-Pz-Bh4">
                                                             <rect key="frame" x="38" y="0.0" width="155" height="22"/>
@@ -725,7 +728,7 @@
         <image name="book" width="30" height="30"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="o0a-vT-PD8"/>
+        <segue reference="lb2-LH-f0F"/>
         <segue reference="c2D-eK-gqF"/>
     </inferredMetricsTieBreakers>
 </document>
