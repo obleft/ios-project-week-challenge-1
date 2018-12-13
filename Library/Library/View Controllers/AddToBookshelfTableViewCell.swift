@@ -31,16 +31,14 @@ class AddToBookshelfTableViewCell: UITableViewCell {
         if var books = category.books {
             books.append(book)
             category.books = books
-            Model.shared.updateCategory(for: category) {
-                self.delegateVariable?.addBookToCategoryClicked(onCell: self)
-            }
+            delegateVariable?.addBookToCategoryClicked(onCell: self)
+            Model.shared.updateCategory(for: category) {}
         } else{ // if it is nil or empty
             var books: [Book] = []
             books.append(book)
             category.books = books
-            Model.shared.updateCategory(for: category) {
-                self.delegateVariable?.addBookToCategoryClicked(onCell: self)
-            }
+            delegateVariable?.addBookToCategoryClicked(onCell: self)
+            Model.shared.updateCategory(for: category) {}
             
             
         }

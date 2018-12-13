@@ -10,8 +10,11 @@ import Foundation
 
 class Model {
     
+    // singleton
     static let shared = Model()
     private init() {}
+    
+    //
     var delegate: ModelUpdateClient?
     
     
@@ -38,6 +41,10 @@ class Model {
     
     func setBooks(books: [Book]) {
         Model.shared.books = books
+    }
+    
+    func getBooks() -> [Book] {
+        return books
     }
     
     func setBook(book: Book) {

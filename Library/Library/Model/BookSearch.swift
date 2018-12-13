@@ -43,6 +43,7 @@ enum Country: String, Codable {
     case nl = "NL"
     case de = "DE"
     case id = "ID"
+    case ind = "IN"
 }
 
 struct Epub: Codable {
@@ -84,6 +85,7 @@ enum CurrencyCode: String, Codable {
     case usd = "USD"
     case eur = "EUR"
     case idr = "IDR"
+    case inr = "INR"
 }
 
 struct Offer: Codable {
@@ -155,6 +157,7 @@ enum Language: String, Codable {
     case nl = "nl"
     case de = "de"
     case fr = "fr"
+    case sr = "sr"
 }
 
 enum MaturityRating: String, Codable {

@@ -10,15 +10,17 @@ import UIKit
 
 class AddToBookshelfTableViewController: UITableViewController, AddToBookshelfCellDelegate {
     var category: Category?
+    var booksAvailableToAdd: [Book] = []
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
+        
         navigationItem.rightBarButtonItem?.isEnabled = false
         let activity = UIActivityIndicatorView()
         activity.style = .gray
         activity.startAnimating()
         navigationItem.titleView = activity
-    
+        
         // Fetch records from Firebase and then reload the table view
         // Note: this may be significantly delayed.
         Firebase<Book>.fetchRecords { books in
@@ -53,8 +55,24 @@ class AddToBookshelfTableViewController: UITableViewController, AddToBookshelfCe
         guard let cell = tableView.dequeueReusableCell(withIdentifier: AddToBookshelfTableViewCell.reuseIdentifier, for: indexPath) as? AddToBookshelfTableViewCell else {fatalError("failed to deque add to bookshelf cast cell")}
 
         // Configure the cell...
-        let book = Model.shared.book(forIndex: indexPath.row)
+        guard let category = category else {fatalError("failed to get category")}
+        let books = Model.shared.getBooks()
+        booksAvailableToAdd = books
         
+        // create the booksAvailableToAdd array
+        if let booksInCategory = category.books{
+            for bookInCategory in booksInCategory{
+                for index in 0..<booksAvailableToAdd.count{
+                    if books[index].id == bookInCategory.id{
+                        self.booksAvailableToAdd.remove(at: index)
+                        
+                    }
+                }
+            }
+        }
+        
+        
+        let book = booksAvailableToAdd[indexPath.row]
         // set the cell's delegate
         cell.delegateVariable = self
         
