@@ -72,7 +72,7 @@ class SearchTableViewController: UITableViewController, UISearchBarDelegate {
         }
         // fill out the cell labels
         cell.titleLabel.text = book.title
-        cell.idLabel.text = book.id
+        cell.authorLabel.text = book.authors
         cell.subtitleLabel.text = book.subtitle
         cell.tableView = self
         cell.row = indexPath.row

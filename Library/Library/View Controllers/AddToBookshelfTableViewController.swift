@@ -9,9 +9,12 @@
 import UIKit
 
 class AddToBookshelfTableViewController: UITableViewController, AddToBookshelfCellDelegate {
+    
+    // declare vars
     var category: Category?
     var booksAvailableToAdd: [Book] = []
     
+
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         
@@ -21,18 +24,19 @@ class AddToBookshelfTableViewController: UITableViewController, AddToBookshelfCe
         activity.startAnimating()
         navigationItem.titleView = activity
         
+        guard let category = category else {fatalError("failed to get category")}
         // Fetch records from Firebase and then reload the table view
         // Note: this may be significantly delayed.
         Firebase<Book>.fetchRecords { books in
             if let books = books {
                 Model.shared.setBooks(books: books)
         
-                // Comment this out to show what it looks like while waiting
+                // when fetch finishes, a
                 DispatchQueue.main.async {
                     self.tableView.reloadData()
                     self.navigationItem.rightBarButtonItem?.isEnabled = true
                     self.navigationItem.titleView = nil
-                    self.title = "Add to Bookshelf"
+                    self.title = "Add to \(category.name)"
                 }
             }
         }
@@ -62,10 +66,10 @@ class AddToBookshelfTableViewController: UITableViewController, AddToBookshelfCe
         // create the booksAvailableToAdd array
         if let booksInCategory = category.books{
             for bookInCategory in booksInCategory{
+//                var adjuster = 0
                 for index in 0..<booksAvailableToAdd.count{
                     if books[index].id == bookInCategory.id{
-                        self.booksAvailableToAdd.remove(at: index)
-                        
+                        self.booksAvailableToAdd.remove(at: (index))
                     }
                 }
             }

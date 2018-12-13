@@ -18,7 +18,7 @@ class SearchTableViewCell: UITableViewCell {
     var onComplete: (() -> Void)? = nil
     @IBOutlet weak var titleLabel: UILabel!
     @IBOutlet weak var subtitleLabel: UILabel!
-    @IBOutlet weak var idLabel: UILabel!
+    @IBOutlet weak var authorLabel: UILabel!
     @IBOutlet weak var saveButton: UIButton!
     @IBOutlet weak var bookImageView: UIImageView!
     

@@ -25,7 +25,7 @@ class BookshelvesDetailTableViewCell: UITableViewCell {
         guard let book = book else {fatalError("unable to access book before editing has read property")}
         
         if book.hasRead == true {
-            hasReadButton.backgroundColor = .blue
+            hasReadButton.backgroundColor = buyButton.backgroundColor
             hasReadButton.setTitle("Mark Read", for: .normal)
             book.hasRead = false
             

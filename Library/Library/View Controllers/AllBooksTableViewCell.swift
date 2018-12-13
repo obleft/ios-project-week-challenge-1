@@ -7,10 +7,12 @@
 //
 
 import UIKit
+import SafariServices
 
 class AllBooksTableViewCell: UITableViewCell {
 
     var book: Book?
+    weak var delegateVariable: AllBooksCellDelegate?
     
     static let reuseIdentifier = "allBooksCell"
     @IBOutlet weak var titleLabel: UILabel!
@@ -27,7 +29,7 @@ class AllBooksTableViewCell: UITableViewCell {
         guard let book = book else {fatalError("unable to access book before editing has read property")}
         
         if book.hasRead == true {
-            hasReadButton.backgroundColor = .blue
+            hasReadButton.backgroundColor = buyButton.backgroundColor
             hasReadButton.setTitle("Mark Read", for: .normal)
             book.hasRead = false
             
@@ -48,4 +50,20 @@ class AllBooksTableViewCell: UITableViewCell {
             Model.shared.updateBook(for: book){}
         }
     }
+    
+    
+    @IBAction func buyButtonClicked(_ sender: Any) {
+        
+        guard let book = book else {fatalError("unable to access book")}
+        
+        if let isbn = book.ISBN_13, isbn != ""{
+            var strURlToOpen = "https://www.amazon.com/s?field-keywords="
+            strURlToOpen += isbn
+            guard let url = URL(string: strURlToOpen) else {return}
+            
+            delegateVariable?.buyButtonClicked(onCell: self, with: url)
+            
+        }
+    }
+    
 }

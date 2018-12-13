@@ -2,12 +2,10 @@ import Foundation
 
 /*
  READ   <- start the application
- 
  POST   <- create, creating a new record, Firebase will return a new record identifier
  PUT    <- update a specific record
  DELETE <- delete a specific record
  */
-
 
 class Firebase<Item: Codable & FirebaseItem> {
     static var baseURL: URL!  { return URL(string: "https://books-417e6.firebaseio.com/") }

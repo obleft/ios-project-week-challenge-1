@@ -7,8 +7,9 @@
 //
 
 import UIKit
+import SafariServices
 
-class AllBooksTableViewController: UITableViewController {
+class AllBooksTableViewController: UITableViewController, AllBooksCellDelegate {
 
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
@@ -52,6 +53,10 @@ class AllBooksTableViewController: UITableViewController {
         
         // assign the book to the cell's book
         cell.book = book
+        
+        // assign the delegate
+        cell.delegateVariable = self
+
         // fill out the cell labels
         cell.titleLabel.text = book.title
         cell.isbn_13Label.text = book.ISBN_13
@@ -119,6 +124,13 @@ class AllBooksTableViewController: UITableViewController {
         
         destination.row = indexPath.row
         destination.book = Model.shared.book(forIndex: indexPath.row)
+    }
+    
+    func buyButtonClicked(onCell: AllBooksTableViewCell, with url: URL) {
+        
+        let svc = SFSafariViewController(url: url)
+        present(svc, animated: true, completion: nil)
+        
     }
 
 }

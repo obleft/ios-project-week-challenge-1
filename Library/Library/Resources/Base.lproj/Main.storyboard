@@ -36,7 +36,7 @@
                                         <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="2" translatesAutoresizingMaskIntoConstraints="NO" id="2zm-me-Q1A">
                                             <rect key="frame" x="86" y="2" width="193" height="75.5"/>
                                             <subviews>
-                                                <stackView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Pbr-Rm-1bk">
+                                                <stackView opaque="NO" userInteractionEnabled="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Pbr-Rm-1bk">
                                                     <rect key="frame" x="0.0" y="0.0" width="193" height="20.5"/>
                                                     <subviews>
                                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="tzz-eG-0Na">
@@ -69,6 +69,9 @@
                                                             <state key="normal" title="Buy">
                                                                 <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                             </state>
+                                                            <connections>
+                                                                <action selector="buyButtonClicked:" destination="hao-OR-DOw" eventType="touchUpInside" id="rqO-1X-feh"/>
+                                                            </connections>
                                                         </button>
                                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="750" text="ISBN_13:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="iss-C1-XrH">
                                                             <rect key="frame" x="38" y="0.0" width="155" height="22"/>
@@ -208,7 +211,8 @@
                                                 <constraint firstAttribute="width" constant="50" id="zUy-rF-FEI"/>
                                             </constraints>
                                             <state key="normal" title="Save">
-                                                <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                <color key="titleColor" red="0.99999600649999998" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                <color key="titleShadowColor" name="selectedMenuItemTextColor" catalog="System" colorSpace="catalog"/>
                                             </state>
                                             <connections>
                                                 <action selector="saveToCollection:" destination="DQK-fJ-yB2" eventType="touchUpInside" id="ZlI-6b-ptC"/>
@@ -226,8 +230,8 @@
                                     </constraints>
                                 </tableViewCellContentView>
                                 <connections>
+                                    <outlet property="authorLabel" destination="RXL-al-Q2Q" id="R93-2W-WnR"/>
                                     <outlet property="bookImageView" destination="2E7-WT-Cr4" id="YSe-ie-rPS"/>
-                                    <outlet property="idLabel" destination="RXL-al-Q2Q" id="qOh-fc-2vi"/>
                                     <outlet property="saveButton" destination="uy3-Dr-1BT" id="4Go-2x-QQL"/>
                                     <outlet property="subtitleLabel" destination="lM6-i3-LiR" id="7o3-zK-5tg"/>
                                     <outlet property="titleLabel" destination="cQS-TE-MNq" id="h5o-Di-vTv"/>
@@ -721,7 +725,7 @@
         <image name="book" width="30" height="30"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="lb2-LH-f0F"/>
-        <segue reference="Nlg-Sn-2px"/>
+        <segue reference="o0a-vT-PD8"/>
+        <segue reference="c2D-eK-gqF"/>
     </inferredMetricsTieBreakers>
 </document>
