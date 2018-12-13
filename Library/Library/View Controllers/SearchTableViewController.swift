@@ -66,7 +66,7 @@ class SearchTableViewController: UITableViewController, UISearchBarDelegate, Sea
                 cell.saveButton.setTitle("Added", for: .normal)
                 break
             } else {
-                cell.saveButton.backgroundColor = colorWithHexString(hexString: "1676ff")
+                cell.saveButton.backgroundColor = SearchTableViewController.colorWithHexString(hexString: "1676ff")
                 cell.saveButton.setTitle("Save", for: .normal)
             }
         }
@@ -143,7 +143,7 @@ class SearchTableViewController: UITableViewController, UISearchBarDelegate, Sea
 
 extension SearchTableViewController{
     
-    func colorWithHexString(hexString: String, alpha:CGFloat? = 1.0) -> UIColor {
+    static func colorWithHexString(hexString: String, alpha:CGFloat? = 1.0) -> UIColor {
         
         // Convert hex string to an integer
         let hexint = Int(self.intFromHexString(hexStr: hexString))
@@ -157,7 +157,7 @@ extension SearchTableViewController{
         return color
     }
     
-    func intFromHexString(hexStr: String) -> UInt32 {
+    static func intFromHexString(hexStr: String) -> UInt32 {
         var hexInt: UInt32 = 0
         // Create scanner
         let scanner: Scanner = Scanner(string: hexStr)

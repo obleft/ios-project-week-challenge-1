@@ -13,7 +13,13 @@ class BookDetailViewController: UIViewController {
     var book: Book?
     var row: Int?
     @IBOutlet weak var titleLabel: UILabel!
+    @IBOutlet weak var subtitleLabel: UILabel!
+    @IBOutlet weak var authorLabel: UILabel!
+    @IBOutlet weak var publisherLabel: UILabel!
+    @IBOutlet weak var publishDateLabel: UILabel!
+    @IBOutlet weak var isbnLabel: UILabel!
     @IBOutlet weak var bookImageView: UIImageView!
+    @IBOutlet weak var bookQRCodeView: UIImageView!
     @IBOutlet weak var bookReviewTextView: UITextView!
     @IBOutlet weak var hasReadButton: UIButton!
     
@@ -21,12 +27,19 @@ class BookDetailViewController: UIViewController {
         super.viewWillAppear(animated)
         
         guard let book = book else { return }
-        titleLabel.text = book.title
+        (titleLabel.text, subtitleLabel.text, authorLabel.text, isbnLabel.text) = (book.title, book.subtitle, book.authors, book.ISBN_13)
         bookReviewTextView.text = book.userReview ?? ""
         
         if book.hasRead == true {
             hasReadButton.backgroundColor = .red
             hasReadButton.setTitle("Mark Unread", for: .normal)
+        }
+        
+        if let isbn = book.ISBN_13, isbn != ""{
+            var strURlToQR = "https://www.amazon.com/s?field-keywords="
+            strURlToQR += isbn
+            let qrImage = generateQRCOde(from: strURlToQR)
+            bookQRCodeView.image = qrImage
         }
         
         var imageUrlString = book.imageLinks ?? ""
@@ -101,5 +114,21 @@ class BookDetailViewController: UIViewController {
             // update firebase
             Model.shared.updateBook(for: book){}
         }
+    }
+    
+    func generateQRCOde(from string: String)-> UIImage? {
+        
+        let data = string.data(using: String.Encoding.utf8)
+        
+        if let filter = CIFilter(name: "CIQRCodeGenerator"){
+            filter.setValue(data, forKey: "inputMessage")
+            let transform = CGAffineTransform(scaleX: 1, y: 1)
+            
+            if let output = filter.outputImage?.transformed(by: transform){
+                return UIImage(ciImage: output)
+            }
+        }
+        
+        return nil
     }
 }
