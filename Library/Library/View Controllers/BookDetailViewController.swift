@@ -12,6 +12,8 @@ class BookDetailViewController: UIViewController {
 
     var book: Book?
     var row: Int?
+    var delegateVariable: AllBooksCellDelegate?
+    
     @IBOutlet weak var titleLabel: UILabel!
     @IBOutlet weak var subtitleLabel: UILabel!
     @IBOutlet weak var authorLabel: UILabel!
@@ -27,13 +29,20 @@ class BookDetailViewController: UIViewController {
         super.viewWillAppear(animated)
         
         guard let book = book else { return }
-        (titleLabel.text, subtitleLabel.text, authorLabel.text, isbnLabel.text) = (book.title, book.subtitle, book.authors, book.ISBN_13)
+        
+        (titleLabel.text, subtitleLabel.text, authorLabel.text, isbnLabel.text, publisherLabel.text, publishDateLabel.text) = (book.title, book.subtitle, book.authors, book.ISBN_13, book.publisher, book.publishedDate)
+        
         bookReviewTextView.text = book.userReview ?? ""
+        
+        if bookReviewTextView.text != ""{
+            navigationItem.backBarButtonItem?.title = "Edit Review"
+        }
         
         if book.hasRead == true {
             hasReadButton.backgroundColor = .red
             hasReadButton.setTitle("Mark Unread", for: .normal)
         }
+        
         
         if let isbn = book.ISBN_13, isbn != ""{
             var strURlToQR = "https://www.amazon.com/s?field-keywords="
@@ -84,7 +93,7 @@ class BookDetailViewController: UIViewController {
         bookReviewTextView.isUserInteractionEnabled = false
         bookReviewTextView.isEditable = false
         bookReviewTextView.backgroundColor = .white
-        navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: .edit, target: self, action: #selector(editReview(_:)))
+        navigationItem.rightBarButtonItem = UIBarButtonItem(title: "Edit Review", style: .plain, target: self, action: #selector(editReview(_:)))
     }
     
     
@@ -94,7 +103,7 @@ class BookDetailViewController: UIViewController {
         guard let book = book else {fatalError("unable to access book before editing has read property")}
         
         if book.hasRead == true {
-            hasReadButton.backgroundColor = .blue
+            hasReadButton.backgroundColor = SearchTableViewController.colorWithHexString(hexString: "1676ff")
             hasReadButton.setTitle("Mark Read", for: .normal)
             book.hasRead = false
             
@@ -102,7 +111,8 @@ class BookDetailViewController: UIViewController {
             Model.shared.setBook(book: book)
             
             // update firebase
-            Model.shared.updateBook(for: book){}
+            Model.shared.updateBook(for: book){
+            }
         } else {
             hasReadButton.backgroundColor = .red
             hasReadButton.setTitle("Mark Unread", for: .normal)
@@ -112,7 +122,8 @@ class BookDetailViewController: UIViewController {
             Model.shared.setBook(book: book)
             
             // update firebase
-            Model.shared.updateBook(for: book){}
+            Model.shared.updateBook(for: book){
+            }
         }
     }
     

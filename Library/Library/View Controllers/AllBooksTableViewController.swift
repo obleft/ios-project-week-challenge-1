@@ -13,6 +13,7 @@ class AllBooksTableViewController: UITableViewController, AllBooksCellDelegate {
 
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
+        self.reloadInputViews()
         navigationItem.rightBarButtonItem?.isEnabled = false
         let activity = UIActivityIndicatorView()
         activity.style = .gray
@@ -47,16 +48,16 @@ class AllBooksTableViewController: UITableViewController, AllBooksCellDelegate {
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         guard let cell = tableView.dequeueReusableCell(withIdentifier: AllBooksTableViewCell.reuseIdentifier, for: indexPath) as? AllBooksTableViewCell else {fatalError("Unable to retrieve and cast cell")}
         // Configure the cell...
-        
         // Configure the cell...
         let book = Model.shared.book(forIndex: indexPath.row)
         
         // assign the book to the cell's book
         cell.book = book
+        cell.indexPath = indexPath.row
         
         // assign the delegate
         cell.delegateVariable = self
-
+        
         // fill out the cell labels
         cell.titleLabel.text = book.title
         cell.isbn_13Label.text = book.ISBN_13

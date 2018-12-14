@@ -158,6 +158,7 @@ enum Language: String, Codable {
     case de = "de"
     case fr = "fr"
     case sr = "sr"
+    case no = "no"
 }
 
 enum MaturityRating: String, Codable {

@@ -19,7 +19,8 @@ class Book: Codable & Equatable & FirebaseItem {
     let etag: String
     let title, subtitle: String
     let authors: String?
-//    let publisher, publishedDate, description: String?
+    let publisher, publishedDate: String?
+//    let description: String?
 //    let industryIdentifiers: [IndustryIdentifier]
 //    let readingModes: ReadingModes
 //    let pageCount: Int?
@@ -38,9 +39,9 @@ class Book: Codable & Equatable & FirebaseItem {
     var userReview: String?
     var ISBN_13: String?
     
-    init(id: String, etag: String, title: String, subtitle: String, authors: String?, imageLinks: String, hasRead: Bool, userReview: String?, ISBN_13: String?) {
+    init(id: String, etag: String, title: String, subtitle: String, authors: String?, imageLinks: String, hasRead: Bool, userReview: String?, ISBN_13: String?, publisher: String?, publishedDate: String?) {
         // let types = types[0] ?? ""
         // let abilities = abilities[0] ?? ""
-        (self.id, self.etag, self.title, self.subtitle, self.authors, self.imageLinks, self.hasRead, self.userReview, self.ISBN_13) = (id, etag, title, subtitle, authors, imageLinks, hasRead, userReview, ISBN_13)
+        (self.id, self.etag, self.title, self.subtitle, self.authors, self.imageLinks, self.hasRead, self.userReview, self.ISBN_13, self.publisher, self.publishedDate) = (id, etag, title, subtitle, authors, imageLinks, hasRead, userReview, ISBN_13, publisher, publishedDate)
     }
 }

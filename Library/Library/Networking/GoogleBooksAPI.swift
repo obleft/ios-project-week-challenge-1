@@ -107,7 +107,9 @@ class GoogleBooksAPI {
                             for index in 0..<(authorsArray.count - 1){
                                 authors += "\(authorsArray[index]), "
                             }
-                            authors += "and \(String(describing: authorsArray.last))"
+                            if let author = authorsArray.last{
+                                authors += "and \(String(describing: author))"
+                            }
                         }
                     }
                     
@@ -124,8 +126,8 @@ class GoogleBooksAPI {
                         
                     }
                     
-//                    let publisher: String? = item.volumeInfo.publisher
-//                    let publishedDate: String? = item.volumeInfo.publishedDate
+                    let publisher: String? = item.volumeInfo.publisher
+                    let publishedDate: String? = item.volumeInfo.publishedDate
 //                    let description: String? = item.volumeInfo.description
 //                    //let industryIdentifiers: [IndustryIdentifier]
 //                    //let readingModes: ReadingModes
@@ -143,12 +145,12 @@ class GoogleBooksAPI {
 //                    //let averageRating: Double? = item.volumeInfo.averageRating?
                     //let ratingsCount: Int? = item.volumeInfo.ratingsCount?
                     //let panelizationSummary: PanelizationSummary?
-                    var userReview = ""
-                    var hasRead = false
+                    let userReview = ""
+                    let hasRead = false
                     // get isbn from industry identifiers later
                     
                 
-                    let book = Book(id: id, etag: etag, title: title, subtitle: subtitle, authors : authors, imageLinks: imageLinks, hasRead: hasRead, userReview: userReview, ISBN_13: ISBN_13)
+                    let book = Book(id: id, etag: etag, title: title, subtitle: subtitle, authors : authors, imageLinks: imageLinks, hasRead: hasRead, userReview: userReview, ISBN_13: ISBN_13, publisher: publisher, publishedDate: publishedDate)
                     
                     books.append(book)
                 }

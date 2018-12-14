@@ -74,15 +74,6 @@ class AddToBookshelfTableViewController: UITableViewController, AddToBookshelfCe
             let dict = $0
             return !booksToExclude.contains{dict == $0}
         }
-//        for index in 0..<books.count {
-//            for exludedId in booksIdsToExclude{
-//                var adjuster = 0
-//                if books[index].id == exludedId{
-//                    booksAvailableToAdd.remove(at: index - adjuster)
-//                    adjuster += 1
-//                }
-//            }
-//        }
         
         
         let book = booksAvailableToAdd[indexPath.row]

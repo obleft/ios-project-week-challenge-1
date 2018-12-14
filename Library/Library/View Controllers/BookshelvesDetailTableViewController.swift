@@ -141,11 +141,27 @@ class BookshelvesDetailTableViewController: UITableViewController, BookshelvesDe
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         // Get the new view controller using segue.destination.
         // Pass the selected object to the new view controller.
+        if segue.identifier == "detailViaBookshelvesSegue"{
+            
+            guard let indexPath = tableView.indexPathForSelectedRow
+                else { return }
+            guard let destination = segue.destination as? BookDetailViewController
+                else { return }
+            // Configure the cell...
+            guard let category = category else {fatalError("failed to get category")}
+            guard let books = category.books else {fatalError("failed to get book in category")}
+
+            let book = books[indexPath.row]
+            
+            destination.book = book
+            
+        }else{
+            guard let destination = segue.destination as? AddToBookshelfTableViewController
+                else { return }
+            
+            destination.category = category
+        }
         
-        guard let destination = segue.destination as? AddToBookshelfTableViewController
-            else { return }
-        
-        destination.category = category
         
     }
 

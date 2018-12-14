@@ -12,6 +12,7 @@ import SafariServices
 class AllBooksTableViewCell: UITableViewCell {
 
     var book: Book?
+    var indexPath: Int?
     weak var delegateVariable: AllBooksCellDelegate?
     
     static let reuseIdentifier = "allBooksCell"
@@ -26,11 +27,11 @@ class AllBooksTableViewCell: UITableViewCell {
     
     @IBAction func hasReadButtonClicked(_ sender: Any) {
         
-        guard let book = book else {fatalError("unable to access book before editing has read property")}
-        
+        guard let book = book else {fatalError("unable to access book")}
         if book.hasRead == true {
             hasReadButton.backgroundColor = buyButton.backgroundColor
             hasReadButton.setTitle("Mark Read", for: .normal)
+            
             book.hasRead = false
             
             // update the local data model
@@ -47,8 +48,11 @@ class AllBooksTableViewCell: UITableViewCell {
             Model.shared.setBook(book: book)
             
             // update firebase
-            Model.shared.updateBook(for: book){}
+            Model.shared.updateBook(for: book){
+            }
         }
+        
+        
     }
     
     
@@ -65,5 +69,7 @@ class AllBooksTableViewCell: UITableViewCell {
             
         }
     }
+    
+    
     
 }

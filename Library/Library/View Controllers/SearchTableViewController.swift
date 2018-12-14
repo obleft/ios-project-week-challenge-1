@@ -10,7 +10,6 @@ import UIKit
 
 class SearchTableViewController: UITableViewController, UISearchBarDelegate, SearchTableCellDelegate {
     
-    
     var onComplete: (() -> Void)? = nil
     
     @IBOutlet weak var searchBar: UISearchBar!
@@ -121,7 +120,9 @@ class SearchTableViewController: UITableViewController, UISearchBarDelegate, Sea
     func saveToCollection(onCell: SearchTableViewCell) {
         showInputDialog()
     }
-    
+    func hasReadButtonClicked(onCell: SearchTableViewCell, for index: Int) {
+        //
+    }
     
     func showInputDialog() {
         //Create the alert controller.
@@ -167,4 +168,5 @@ extension SearchTableViewController{
         scanner.scanHexInt32(&hexInt)
         return hexInt
     }
+    
 }

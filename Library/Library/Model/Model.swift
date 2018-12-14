@@ -47,6 +47,11 @@ class Model {
         return books
     }
     
+    func setBookHasRead(forIndex index: Int){
+        books[index].hasRead = !books[index].hasRead
+        updateBook(for: books[index]) {}
+    }
+    
     func setBook(book: Book) {
         
         for index in 0..<books.count {
@@ -56,6 +61,7 @@ class Model {
             }
         }
         fatalError("Error: Trying to set a book that doesn't exist")
+        
     }
     
     // MARK: - Catagory Methods
